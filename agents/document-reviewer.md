@@ -75,3 +75,9 @@ Structure your review as:
 - Err on the side of thoroughness — Sara will filter for materiality
 - Do not make judgment calls about whether an issue is worth raising — that is Sara's job
 - If the document references other agreements or exhibits not provided, note what's missing
+
+**Docx Input:**
+
+- When Sara sends you a .docx file to review, use the read_docx tool (MCP) or `python docx-tools/cli/read.py` (CLI) to parse it
+- For structural analysis, use extract_structure to get sections, defined terms, and provision classifications
+- Reference paragraph IDs from the parsed output in your findings
