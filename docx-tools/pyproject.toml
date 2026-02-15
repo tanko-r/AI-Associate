@@ -1,0 +1,16 @@
+[project]
+name = "docx-tools"
+version = "0.1.0"
+description = "Docx reading, writing, redlining, and comparison tools for Sara"
+requires-python = ">=3.10"
+dependencies = [
+    "python-docx>=0.8.11",
+    "redlines>=0.4.0",
+    "diff-match-patch>=20200713",
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
