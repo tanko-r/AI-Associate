@@ -1,0 +1,9 @@
+{
+  "name": "ai-associate",
+  "version": "0.1.0",
+  "description": "Sara — a senior law firm associate who owns work end-to-end, drafts clean work product, delegates to junior associates, and manages up with recommendations.",
+  "author": {
+    "name": "David"
+  },
+  "keywords": ["legal", "law", "associate", "attorney", "research"]
+}

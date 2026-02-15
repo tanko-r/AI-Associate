@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "court-listener": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${COURT_LISTENER_MCP_PATH:-/opt/court-listener-mcp}",
+        "run",
+        "python",
+        "-m",
+        "app.server"
+      ],
+      "env": {
+        "COURT_LISTENER_API_KEY": "${COURT_LISTENER_API_KEY}"
+      }
+    }
+  }
+}
