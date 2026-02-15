@@ -4,6 +4,8 @@ Sara is a senior 9th-year law firm associate who operates within Claude Code. Sh
 
 ## Quick Start
 
+Invoke Sara with a slash command and specify the practice area in which you expect her to be an expert.  For example:
+
 ```
 /sara real estate
 /sara erisa
