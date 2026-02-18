@@ -12,9 +12,9 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 - [x] **REVQ-01**: Sara examines every paragraph and assigns a disposition (Accept/Revise/Delete/Insert/Comment) at aggressiveness Level 4-5
 - [x] **REVQ-02**: Sara builds practice-area-specific analysis framework (target concept list + target risk list) before starting clause-by-clause review
 - [ ] **REVQ-03**: Sara drafts full replacement paragraph language with specific legal rationale for each revision
-- [ ] **REVQ-04**: Sara verifies cross-references and conforming changes before compiling final revision set
+- [x] **REVQ-04**: Sara verifies cross-references and conforming changes before compiling final revision set
 - [x] **REVQ-05**: Sara delivers complete transmittal package (redline + transmittal memo + open items list) for every contract review
-- [ ] **REVQ-06**: Sara includes market standard citations in every substantive markup
+- [x] **REVQ-06**: Sara includes market standard citations in every substantive markup
 
 ### Subagent Delegation & Quality Loop
 
@@ -78,9 +78,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REVQ-01 | Phase 1 | Complete |
 | REVQ-02 | Phase 1 | Complete |
 | REVQ-03 | Phase 1 | Pending |
-| REVQ-04 | Phase 1 | Pending |
+| REVQ-04 | Phase 1 | Complete |
 | REVQ-05 | Phase 1 | Complete |
-| REVQ-06 | Phase 1 | Pending |
+| REVQ-06 | Phase 1 | Complete |
 | DLGT-01 | Phase 1 | Pending |
 | DLGT-02 | Phase 1 | Complete |
 | DLGT-03 | Phase 1 | Complete |

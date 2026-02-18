@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 1 of 3 (Behavioral Foundation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Executing Phase 1
-Last activity: 2026-02-18 -- Completed 01-01-PLAN.md (Sara behavioral foundation)
+Last activity: 2026-02-18 -- Completed 01-02-PLAN.md (Document-reviewer disposition table upgrade)
 
-Progress: [█░░░░░░░░░] 12%
+Progress: [██░░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 7 min
-- Total execution time: 7 min
+- Total plans completed: 2
+- Average duration: 5 min
+- Total execution time: 9 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Behavioral Foundation | 1/3 | 7 min | 7 min |
+| 1. Behavioral Foundation | 2/3 | 9 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (7 min)
-- Trend: First plan completed
+- Last 5 plans: 01-01 (7 min), 01-02 (2 min)
+- Trend: Accelerating -- focused single-file plans execute quickly
 
 *Updated after each plan completion*
 
@@ -51,6 +51,9 @@ Recent decisions affecting current work:
 - [01-01]: Quality loop: always provide substantive feedback (refinement on good work, not artificial rejection) with max 2 revision rounds
 - [01-01]: Transmittal memo is THE primary deliverable -- open items embedded by contract provision, disposition table as appendix
 - [01-01]: Coverage floors: 35+ revision entries at Level 4, 40+ at Level 5 for 150-paragraph PSA, scaled proportionally
+- [01-02]: Section C (conforming changes) as separate table in reviewer output -- gives Sara actionable cross-reference verification data
+- [01-02]: Strongest reasonable disposition for uncertain provisions -- surfaces issues for Sara to calibrate rather than defaulting to Accept
+- [01-02]: 160-line reviewer prompt (under 200-line Pitfall 3 threshold) -- detailed quality anchoring without excessive context consumption
 
 ### Pending Todos
 
@@ -65,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-01-PLAN.md
-Resume file: .planning/phases/01-behavioral-foundation/01-01-SUMMARY.md
+Stopped at: Completed 01-02-PLAN.md
+Resume file: .planning/phases/01-behavioral-foundation/01-02-SUMMARY.md
