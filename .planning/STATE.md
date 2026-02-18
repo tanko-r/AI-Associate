@@ -9,29 +9,29 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 
 ## Current Position
 
-Phase: 1 of 3 (Behavioral Foundation)
-Plan: 2 of 3 in current phase
-Status: Executing Phase 1
-Last activity: 2026-02-18 -- Completed 01-02-PLAN.md (Document-reviewer disposition table upgrade)
+Phase: 1 of 3 (Behavioral Foundation) -- COMPLETE
+Plan: 3 of 3 in current phase -- ALL PLANS COMPLETE
+Status: Phase 1 Complete -- Ready for Phase 2
+Last activity: 2026-02-18 -- Completed 01-03-PLAN.md (Agent prompts and delegation model)
 
-Progress: [██░░░░░░░░] 25%
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 5 min
-- Total execution time: 9 min
+- Total plans completed: 3
+- Average duration: 4 min
+- Total execution time: 12 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Behavioral Foundation | 2/3 | 9 min | 5 min |
+| 1. Behavioral Foundation | 3/3 | 12 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (7 min), 01-02 (2 min)
-- Trend: Accelerating -- focused single-file plans execute quickly
+- Last 5 plans: 01-01 (7 min), 01-02 (2 min), 01-03 (3 min)
+- Trend: Consistent -- behavioral rewrites execute in 2-7 min each
 
 *Updated after each plan completion*
 
@@ -54,6 +54,11 @@ Recent decisions affecting current work:
 - [01-02]: Section C (conforming changes) as separate table in reviewer output -- gives Sara actionable cross-reference verification data
 - [01-02]: Strongest reasonable disposition for uncertain provisions -- surfaces issues for Sara to calibrate rather than defaulting to Accept
 - [01-02]: 160-line reviewer prompt (under 200-line Pitfall 3 threshold) -- detailed quality anchoring without excessive context consumption
+- [01-03]: All agent prompts use experienced-attorney framing -- no junior/senior hierarchy language (anti-context-poisoning)
+- [01-03]: Contract-reviser receives disposition table entries as new input, linking reviewer output to revision batches
+- [01-03]: Delegation briefing templates are agent-type-specific but share common DLGT-01 required fields
+- [01-03]: Transmittal memo uses risk flagging (Key Changes + Open Items) not negotiation strategy (Must-haves/Strong preferences/Nice-to-haves)
+- [01-03]: Legal-researcher has dual output modes: standard (Q/A/Analysis) and framework-building (feeds Step 3 target lists)
 
 ### Pending Todos
 
@@ -68,5 +73,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-02-PLAN.md
-Resume file: .planning/phases/01-behavioral-foundation/01-02-SUMMARY.md
+Stopped at: Completed 01-03-PLAN.md -- Phase 1 complete
+Resume file: .planning/phases/01-behavioral-foundation/01-03-SUMMARY.md
