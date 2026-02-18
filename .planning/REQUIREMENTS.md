@@ -5,7 +5,7 @@
 
 ## v1 Requirements
 
-Requirements for initial release. MVP scope: PSA review and deal-related workflows (title objections, closing checklists). Sara uses an iterative review loop with juniors — sending work back until it meets her exacting standards.
+Requirements for initial release. MVP scope: PSA review and deal-related workflows (title objections, closing checklists, closing documents). Sara uses an iterative review loop with juniors — sending work back until it meets her exacting standards.
 
 ### Contract Review Quality
 
@@ -25,13 +25,14 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 
 ### RE Knowledge Layer
 
-- [ ] **KNOW-01**: RE-specific PSA review checklist that Sara loads during framework building (Step 3) — covers DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions
-- [ ] **KNOW-02**: Clause library with model language for critical RE deal provision types (indemnification caps, rep qualifiers, DD termination rights, deposit hard-going triggers, estoppel requirements, assignment restrictions)
+- [ ] **KNOW-01**: RE-specific PSA review checklist stub that Sara loads during framework building (Step 3) — structured skeleton with correct sections, per-category target risk lists, and placeholders for the user to fill in; covers DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions
+- [ ] **KNOW-02**: Clause library stub and market-standards stub with correct structure, section headers, and placeholders for model language — files ship as templates the user completes, not fully authored reference material
 
 ### Deal Workflows
 
 - [ ] **DEAL-01**: Sara can generate a closing checklist and deal calendar from a finalized PSA
 - [ ] **DEAL-02**: Sara can draft title objection letters based on title commitment review
+- [ ] **DEAL-03**: Sara can draft standard closing and deal documents from a finalized PSA — including deeds, assignments, estoppels, escrow holdback agreements, and other closing deliverables a senior RE associate would prepare
 
 ### Collaborative Interaction
 
@@ -66,6 +67,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | Generic legal AI responses outside RE | Quality comes from depth; MVP is RE deals only |
 | Lease review workflow | Deferred to v2; PSA and deal workflows are the validation target |
 | Real-time multi-party collaboration | Claude Code is single-session; share work product as files |
+| Full authoring of RE checklist/clause library content | User authors the substantive content; Phase 2 delivers the structure and stubs |
 
 ## Traceability
 
@@ -73,28 +75,29 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REVQ-01 | — | Pending |
-| REVQ-02 | — | Pending |
-| REVQ-03 | — | Pending |
-| REVQ-04 | — | Pending |
-| REVQ-05 | — | Pending |
-| REVQ-06 | — | Pending |
-| DLGT-01 | — | Pending |
-| DLGT-02 | — | Pending |
-| DLGT-03 | — | Pending |
-| DLGT-04 | — | Pending |
-| KNOW-01 | — | Pending |
-| KNOW-02 | — | Pending |
-| DEAL-01 | — | Pending |
-| DEAL-02 | — | Pending |
-| COLB-01 | — | Pending |
-| COLB-02 | — | Pending |
+| REVQ-01 | Phase 1 | Pending |
+| REVQ-02 | Phase 1 | Pending |
+| REVQ-03 | Phase 1 | Pending |
+| REVQ-04 | Phase 1 | Pending |
+| REVQ-05 | Phase 1 | Pending |
+| REVQ-06 | Phase 1 | Pending |
+| DLGT-01 | Phase 1 | Pending |
+| DLGT-02 | Phase 1 | Pending |
+| DLGT-03 | Phase 1 | Pending |
+| DLGT-04 | Phase 1 | Pending |
+| KNOW-01 | Phase 2 | Pending |
+| KNOW-02 | Phase 2 | Pending |
+| DEAL-01 | Phase 3 | Pending |
+| DEAL-02 | Phase 3 | Pending |
+| DEAL-03 | Phase 3 | Pending |
+| COLB-01 | Phase 1 | Pending |
+| COLB-02 | Phase 1 | Pending |
 
 **Coverage:**
-- v1 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16
+- v1 requirements: 17 total
+- Mapped to phases: 17
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-18*
-*Last updated: 2026-02-18 after initial definition*
+*Last updated: 2026-02-18 — KNOW-01/KNOW-02 updated to stub approach; DEAL-03 added for closing document drafting*
