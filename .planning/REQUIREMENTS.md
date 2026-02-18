@@ -9,19 +9,19 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 
 ### Contract Review Quality
 
-- [ ] **REVQ-01**: Sara examines every paragraph and assigns a disposition (Accept/Revise/Delete/Insert/Comment) at aggressiveness Level 4-5
-- [ ] **REVQ-02**: Sara builds practice-area-specific analysis framework (target concept list + target risk list) before starting clause-by-clause review
+- [x] **REVQ-01**: Sara examines every paragraph and assigns a disposition (Accept/Revise/Delete/Insert/Comment) at aggressiveness Level 4-5
+- [x] **REVQ-02**: Sara builds practice-area-specific analysis framework (target concept list + target risk list) before starting clause-by-clause review
 - [ ] **REVQ-03**: Sara drafts full replacement paragraph language with specific legal rationale for each revision
 - [ ] **REVQ-04**: Sara verifies cross-references and conforming changes before compiling final revision set
-- [ ] **REVQ-05**: Sara delivers complete transmittal package (redline + transmittal memo + open items list) for every contract review
+- [x] **REVQ-05**: Sara delivers complete transmittal package (redline + transmittal memo + open items list) for every contract review
 - [ ] **REVQ-06**: Sara includes market standard citations in every substantive markup
 
 ### Subagent Delegation & Quality Loop
 
 - [ ] **DLGT-01**: Every subagent delegation includes representation, aggressiveness, target risk list, paragraph IDs, defined terms, and explicit output format
-- [ ] **DLGT-02**: Sara iteratively reviews junior work product and sends it back with specific feedback until it meets her standards (ralph loop pattern)
-- [ ] **DLGT-03**: Sara's review of junior work is exacting — she checks legal reasoning, drafting precision, cross-reference accuracy, and market standard compliance before accepting
-- [ ] **DLGT-04**: Sara logs every delegation and review cycle in prompt-log.md
+- [x] **DLGT-02**: Sara iteratively reviews junior work product and sends it back with specific feedback until it meets her standards (ralph loop pattern)
+- [x] **DLGT-03**: Sara's review of junior work is exacting — she checks legal reasoning, drafting precision, cross-reference accuracy, and market standard compliance before accepting
+- [x] **DLGT-04**: Sara logs every delegation and review cycle in prompt-log.md
 
 ### RE Knowledge Layer
 
@@ -36,8 +36,8 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 
 ### Collaborative Interaction
 
-- [ ] **COLB-01**: Sara asks clarifying questions before starting complex work (representation, deal context, aggressiveness level, client priorities)
-- [ ] **COLB-02**: Sara proposes her approach and checks in with the partner before finalizing major work product
+- [x] **COLB-01**: Sara asks clarifying questions before starting complex work (representation, deal context, aggressiveness level, client priorities)
+- [x] **COLB-02**: Sara proposes her approach and checks in with the partner before finalizing major work product
 
 ## v2 Requirements
 
@@ -75,23 +75,23 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REVQ-01 | Phase 1 | Pending |
-| REVQ-02 | Phase 1 | Pending |
+| REVQ-01 | Phase 1 | Complete |
+| REVQ-02 | Phase 1 | Complete |
 | REVQ-03 | Phase 1 | Pending |
 | REVQ-04 | Phase 1 | Pending |
-| REVQ-05 | Phase 1 | Pending |
+| REVQ-05 | Phase 1 | Complete |
 | REVQ-06 | Phase 1 | Pending |
 | DLGT-01 | Phase 1 | Pending |
-| DLGT-02 | Phase 1 | Pending |
-| DLGT-03 | Phase 1 | Pending |
-| DLGT-04 | Phase 1 | Pending |
+| DLGT-02 | Phase 1 | Complete |
+| DLGT-03 | Phase 1 | Complete |
+| DLGT-04 | Phase 1 | Complete |
 | KNOW-01 | Phase 2 | Pending |
 | KNOW-02 | Phase 2 | Pending |
 | DEAL-01 | Phase 3 | Pending |
 | DEAL-02 | Phase 3 | Pending |
 | DEAL-03 | Phase 3 | Pending |
-| COLB-01 | Phase 1 | Pending |
-| COLB-02 | Phase 1 | Pending |
+| COLB-01 | Phase 1 | Complete |
+| COLB-02 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 17 total
