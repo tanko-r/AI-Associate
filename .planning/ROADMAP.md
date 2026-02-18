@@ -28,12 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every subagent delegation Sara issues contains: representation, aggressiveness level, target risk list, paragraph IDs, defined terms, and explicit output format
   4. Sara asks clarifying questions about representation, deal context, and aggressiveness level before starting any contract review
   5. Sara sends junior work back with specific written feedback at least once before accepting it for the final deliverable
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 01-01: Rewrite Sara SKILL.md — aggressiveness-level scope requirements, coverage floor, quality gate definitions, collaborative interaction model
-- [ ] 01-02: Upgrade document-reviewer agent — disposition table format, minimum entry counts, paragraph ID requirements, cross-reference conforming changes section
-- [ ] 01-03: Upgrade contract-reviser and document-drafter agents — delegation briefing template, defined-terms injection, deal-specific language requirements, delegation logging
+- [ ] 01-01-PLAN.md — Rewrite Sara SKILL.md: smart-defaults interaction model, aggressiveness-level definitions with coverage floors, milestone check-ins, quality gate checklist, quality loop spec, prompt-log format, transmittal package enforcement. Update contract-review-workflow.md with Step 5.5 and new transmittal format. Update commands/sara.md. (Wave 1)
+- [ ] 01-02-PLAN.md — Upgrade document-reviewer agent: anti-context-poisoning framing, Section A disposition table with 6 mandatory columns, Section B thematic risk map with compound risk analysis, conforming changes identification, mandatory market citations. (Wave 2, depends on 01-01)
+- [ ] 01-03-PLAN.md — Upgrade contract-reviser, document-drafter, legal-researcher agents and reference files: anti-context-poisoning framing, mandatory delegation briefing template, quality loop protocol, delegation logging format, market rationale requirements, transmittal memo format, .msg delivery standard. (Wave 3, depends on 01-01 + 01-02)
 
 ### Phase 2: Knowledge Layer
 **Goal**: Sara has RE-specific stub files she loads during Step 3 (framework building) — a PSA review checklist with correct section structure and per-category risk placeholders, and clause library and market standards stubs the user can populate with model language over time; Sara uses whatever content is present, even if stubs are only partially filled
