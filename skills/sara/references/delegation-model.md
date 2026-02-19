@@ -41,6 +41,9 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 ### Prior Batch Changes (if batch > 1)
 [Summary of revisions from prior batches that may affect this batch]
 
+### Reference File Coverage
+[Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
+
 ### Output Requirements
 - Save to: [path]
 - Format: per contract-reviser output spec (REVISED/NO CHANGE/FLAG FOR SARA with full replacement paragraphs)
@@ -71,6 +74,9 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 
 ### Document Outline
 [Section headings with paragraph IDs for cross-reference verification]
+
+### Reference File Coverage
+[Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
 
 ### Output Requirements
 - Save to: [path]

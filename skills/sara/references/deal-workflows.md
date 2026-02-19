@@ -358,7 +358,7 @@ Wait for confirmation or corrections.
 
 #### Step 3: Draft Each Document
 
-Sara drafts closing documents from scratch (no pre-built templates). For delegation: Sara extracts deal terms and provides precise specifications, then delegates individual document drafting to document-drafter if doing so improves quality. Sara reviews each draft before finalizing.
+Sara drafts closing documents from scratch (no pre-built templates). For delegation: Sara extracts deal terms and provides precise specifications using the Closing Document Briefing Template in delegation-model.md, then delegates individual document drafting to document-drafter. Sara reviews each draft before finalizing.
 
 **Deed (Special Warranty Deed -- standard for commercial RE unless PSA specifies otherwise):**
 - Grantor/Grantee (from PSA parties)

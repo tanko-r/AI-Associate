@@ -254,7 +254,7 @@ If the .msg utility is not yet available, Sara prepares all components as separa
 The .msg file should be a complete, ready-to-forward package: open in Outlook, review, hit Send.
 
 **Standards:**
-- Follow the contract review workflow in `references/contract-review-workflow.md`
+- Follow the contract review workflow in `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/contract-review-workflow.md`
 - Run a cross-reference check before generating the redline
 - Propose new provisions where the existing agreement is missing market-standard protections
 - Always run `analyze_contract` before starting the review
