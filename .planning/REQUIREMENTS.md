@@ -25,8 +25,8 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 
 ### RE Knowledge Layer
 
-- [ ] **KNOW-01**: RE-specific PSA review checklist stub that Sara loads during framework building (Step 3) — structured skeleton with correct sections, per-category target risk lists, and placeholders for the user to fill in; covers DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions
-- [ ] **KNOW-02**: Clause library stub and market-standards stub with correct structure, section headers, and placeholders for model language — files ship as templates the user completes, not fully authored reference material
+- [x] **KNOW-01**: RE-specific PSA review checklist stub that Sara loads during framework building (Step 3) — structured skeleton with correct sections, per-category target risk lists, and placeholders for the user to fill in; covers DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions
+- [x] **KNOW-02**: Clause library stub and market-standards stub with correct structure, section headers, and placeholders for model language — files ship as templates the user completes, not fully authored reference material
 
 ### Deal Workflows
 
@@ -85,8 +85,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLGT-02 | Phase 1 | Complete |
 | DLGT-03 | Phase 1 | Complete |
 | DLGT-04 | Phase 1 | Complete |
-| KNOW-01 | Phase 2 | Pending |
-| KNOW-02 | Phase 2 | Pending |
+| KNOW-01 | Phase 2 | Complete |
+| KNOW-02 | Phase 2 | Complete |
 | DEAL-01 | Phase 3 | Pending |
 | DEAL-02 | Phase 3 | Pending |
 | DEAL-03 | Phase 3 | Pending |

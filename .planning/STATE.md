@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** Sara's work product must be thorough enough that a partner would approve it with light review — every clause examined, every risk flagged with specific alternative language, every deliverable complete.
-**Current focus:** Phase 1 — Behavioral Foundation
+**Current focus:** Phase 2 — Knowledge Layer
 
 ## Current Position
 
-Phase: 1 of 3 (Behavioral Foundation) -- COMPLETE
-Plan: 3 of 3 in current phase -- ALL PLANS COMPLETE
-Status: Phase 1 Complete -- Ready for Phase 2
-Last activity: 2026-02-18 -- Completed 01-03-PLAN.md (Agent prompts and delegation model)
+Phase: 2 of 3 (Knowledge Layer) -- COMPLETE
+Plan: 2 of 2 in current phase -- ALL PLANS COMPLETE
+Status: Phase 2 Complete -- Ready for Phase 3
+Last activity: 2026-02-19 -- Completed 02-02-PLAN.md (Clause library, market standards, workflow wiring)
 
-Progress: [███░░░░░░░] 33%
+Progress: [██████░░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 4 min
-- Total execution time: 12 min
+- Total plans completed: 5
+- Average duration: 5 min
+- Total execution time: 22 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Behavioral Foundation | 3/3 | 12 min | 4 min |
+| 2. Knowledge Layer | 2/2 | 10 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (7 min), 01-02 (2 min), 01-03 (3 min)
-- Trend: Consistent -- behavioral rewrites execute in 2-7 min each
+- Last 5 plans: 01-02 (2 min), 01-03 (3 min), 02-01 (10 min), 02-02 (10 min)
+- Trend: Knowledge layer plans take longer due to document extraction and large file creation
 
 *Updated after each plan completion*
 
@@ -59,6 +60,11 @@ Recent decisions affecting current work:
 - [01-03]: Delegation briefing templates are agent-type-specific but share common DLGT-01 required fields
 - [01-03]: Transmittal memo uses risk flagging (Key Changes + Open Items) not negotiation strategy (Must-haves/Strong preferences/Nice-to-haves)
 - [01-03]: Legal-researcher has dual output modes: standard (Q/A/Analysis) and framework-building (feeds Step 3 target lists)
+- [02-01]: Categories 1-13 tagged [Common], 14-24 tagged [Specialized] -- drives missing provisions report filtering
+- [02-01]: Review points framed as neutral imperatives; representation-specific guidance in Key Risks buyer/seller columns only
+- [02-02]: Source marker uses dagger symbol for LLM-sourced items in disposition table and transmittal memo
+- [02-02]: Reference file loading is best-effort with graceful degradation -- never blocks a review
+- [02-02]: Selective loading pattern: read category index first, then only relevant categories to manage context budget
 
 ### Pending Todos
 
@@ -72,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-18
-Stopped at: Completed 01-03-PLAN.md -- Phase 1 complete
-Resume file: .planning/phases/01-behavioral-foundation/01-03-SUMMARY.md
+Last session: 2026-02-19
+Stopped at: Completed 02-02-PLAN.md -- Phase 2 complete
+Resume file: .planning/phases/02-knowledge-layer/02-02-SUMMARY.md
