@@ -59,12 +59,12 @@ Plans:
   2. Given a title commitment, Sara produces a title objection letter that identifies Schedule B-II exceptions requiring curative action, specifies the cure required for each, and sets a reasonable objection deadline
   3. Given a finalized PSA and deal context, Sara drafts standard closing documents — including at minimum a deed, assignment and assumption agreement, and estoppel certificate — populated with deal-specific terms extracted from the PSA
   4. Sara's closing document drafts include a cover note identifying which provisions require partner review, deal-specific insertions that need verification, and any provisions she could not populate from available documents
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
-- [ ] 03-01-PLAN.md — Enhance write_docx with table and list rendering, create calendar_writer.py for .ics generation, create deal-workflows.md with Workflow 1 (closing checklist), add SARA.md persistence to SKILL.md, update work-product-standards.md with checklist and calendar standards (Wave 1)
-- [ ] 03-02-PLAN.md — Define Workflow 2 (title objection letter + title summary memo) in deal-workflows.md with three-bucket exception categorization (Accept/Object/Review), add title letter and memo standards to work-product-standards.md (Wave 2, depends on 03-01)
-- [ ] 03-03-PLAN.md — Define Workflow 3 (closing document drafting) in deal-workflows.md for deeds, assignments, estoppels, and holdbacks; update document-drafter.md and delegation-model.md with closing document patterns; add closing document standards to work-product-standards.md (Wave 2, depends on 03-01)
+- [x] 03-01-PLAN.md — Enhance write_docx with table and list rendering, create calendar_writer.py for .ics generation, create deal-workflows.md with Workflow 1 (closing checklist), add SARA.md persistence to SKILL.md, update work-product-standards.md with checklist and calendar standards (Wave 1)
+- [x] 03-02-PLAN.md — Define Workflow 2 (title objection letter + title summary memo) in deal-workflows.md with three-bucket exception categorization (Accept/Object/Review), add title letter and memo standards to work-product-standards.md (Wave 2, depends on 03-01)
+- [x] 03-03-PLAN.md — Define Workflow 3 (closing document drafting) in deal-workflows.md for deeds, assignments, estoppels, and holdbacks; update document-drafter.md and delegation-model.md with closing document patterns; add closing document standards to work-product-standards.md (Wave 2, depends on 03-01)
 
 ### Phase 4: Integration Fixes & Cleanup
 **Goal**: Close all integration gaps and actionable tech debt items identified by the v1.0 milestone audit — fix delegation template wiring, stale path references, and documentation drift
@@ -78,7 +78,7 @@ Plans:
   4. Stale root-level `references/` directory is deleted
   5. gen_calendar.py docstring references the correct filename
   6. README.md uses the correct skill name `sara`
-**Plans:** 0/1
+**Plans:** 1 plan
 
 Plans:
 - [ ] 04-01-PLAN.md — Fix all 3 integration gaps (INT-01, INT-02, INT-03) and 3 tech debt items in a single plan (Wave 1)
@@ -86,7 +86,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
