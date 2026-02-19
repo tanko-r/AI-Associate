@@ -14,7 +14,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Behavioral Foundation** - Rewrite Sara's orchestration logic, delegation model, and subagent prompts to produce partner-ready PSA reviews with complete transmittal packages (completed 2026-02-18)
 - [x] **Phase 2: Knowledge Layer** - Build RE-specific stub files (checklist, clause library, market standards) with correct structure and placeholders that Sara loads during framework building and the user fills in over time (completed 2026-02-19)
-- [ ] **Phase 3: Deal Workflows** - Add closing checklist generation, title objection letter drafting, and closing document drafting (deeds, assignments, estoppels, holdbacks) as validated Sara capabilities
+- [x] **Phase 3: Deal Workflows** - Add closing checklist generation, title objection letter drafting, and closing document drafting (deeds, assignments, estoppels, holdbacks) as validated Sara capabilities (completed 2026-02-18)
+- [ ] **Phase 4: Integration Fixes & Cleanup** - Close 3 integration gaps (INT-01, INT-02, INT-03) and 3 tech debt items identified by milestone audit (gap closure)
 
 ## Phase Details
 
@@ -65,13 +66,31 @@ Plans:
 - [ ] 03-02-PLAN.md — Define Workflow 2 (title objection letter + title summary memo) in deal-workflows.md with three-bucket exception categorization (Accept/Object/Review), add title letter and memo standards to work-product-standards.md (Wave 2, depends on 03-01)
 - [ ] 03-03-PLAN.md — Define Workflow 3 (closing document drafting) in deal-workflows.md for deeds, assignments, estoppels, and holdbacks; update document-drafter.md and delegation-model.md with closing document patterns; add closing document standards to work-product-standards.md (Wave 2, depends on 03-01)
 
+### Phase 4: Integration Fixes & Cleanup
+**Goal**: Close all integration gaps and actionable tech debt items identified by the v1.0 milestone audit — fix delegation template wiring, stale path references, and documentation drift
+**Depends on**: Phase 3
+**Requirements**: DLGT-01, KNOW-01, KNOW-02, REVQ-05, DEAL-03 (integration fixes for already-satisfied requirements)
+**Gap Closure**: Closes INT-01, INT-02, INT-03 from v1.0 audit + 3 tech debt items
+**Success Criteria** (what must be TRUE):
+  1. Document-Reviewer and Contract-Reviser briefing templates in delegation-model.md include a "Reference File Coverage" field
+  2. work-product-standards.md references the canonical `skills/sara/references/contract-review-workflow.md` path, not the stale root-level copy
+  3. deal-workflows.md Workflow 3 explicitly cross-references the Closing Document Briefing Template in delegation-model.md
+  4. Stale root-level `references/` directory is deleted
+  5. gen_calendar.py docstring references the correct filename
+  6. README.md uses the correct skill name `sara`
+**Plans:** 0/1
+
+Plans:
+- [ ] 04-01-PLAN.md — Fix all 3 integration gaps (INT-01, INT-02, INT-03) and 3 tech debt items in a single plan (Wave 1)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3
+Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Behavioral Foundation | 3/3 | Complete | 2026-02-18 |
 | 2. Knowledge Layer | 2/2 | Complete | 2026-02-19 |
-| 3. Deal Workflows | 0/3 | Not started | - |
+| 3. Deal Workflows | 3/3 | Complete | 2026-02-18 |
+| 4. Integration Fixes & Cleanup | 0/1 | Not started | - |
