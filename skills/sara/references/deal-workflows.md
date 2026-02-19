@@ -307,24 +307,151 @@ Wait for confirmation or corrections. Apply any corrections to the categorizatio
 
 ## Workflow 3: Closing Documents from PSA
 
-[STUB -- completed in Plan 03-03]
-
 ### Purpose
 
-Draft standard closing documents from a finalized PSA: deed, assignment and assumption, estoppel certificates, escrow holdback agreement.
+Draft standard closing documents from a finalized PSA: deed, assignment and assumption of leases, estoppel certificates, and escrow holdback agreement -- to the extent called for in the PSA.
 
 ### Input
 
 - PSA (required)
-- SARA.md (if it exists)
-- Jurisdiction/state (optional -- Sara asks if not provided and cannot be inferred)
+- SARA.md (if it exists from prior workflows -- strongly preferred, as it contains extracted deal terms)
+- Jurisdiction/state (optional -- Sara asks if not provided and cannot be inferred from the PSA or SARA.md)
 
 ### Output
 
-- Individual document files (deed.docx, assignment.docx, estoppel-[tenant].docx, holdback.docx)
-- Cover note
+- Separate document files per type, with deal-specific naming:
+  - `deed-[property-shortname].docx`
+  - `assignment-[property-shortname].docx`
+  - `estoppel-[tenant-name].docx` (one per tenant)
+  - `holdback-[property-shortname].docx`
+- Cover note (markdown)
 - Updated SARA.md
 
 ### Steps
 
-[To be defined in Plan 03-03]
+#### Step 1: Read PSA/SARA.md and Identify Required Documents
+
+1. Read SARA.md if it exists (strongly preferred -- contains extracted deal terms from prior workflows)
+2. If no SARA.md: read PSA using `read_docx` and extract deal terms
+3. Determine which closing documents the PSA requires:
+   - **Deed:** Required in virtually all PSA transactions (type depends on PSA -- special warranty deed is standard for commercial)
+   - **Assignment and assumption of leases:** Required if property has tenants
+   - **Estoppel certificates:** Required if PSA has estoppel requirements (identify which tenants, thresholds)
+   - **Escrow holdback agreement:** Required only if PSA provides for a holdback (identify amount, purpose, conditions)
+   - **Other documents:** Identify any additional closing deliverables called for in the PSA (e.g., FIRPTA affidavit, authority certificates, bill of sale for personal property)
+4. Confirm jurisdiction: check SARA.md, PSA governing law provision, property location. If ambiguous, ask the partner.
+5. Extract deal terms needed for each document type:
+   - Parties (full legal names), property description (legal description from exhibits if available), purchase price, closing date, permitted exceptions, lease schedule, tenant information, holdback terms
+
+#### Step 2: Milestone Check-in (Document List and Key Terms)
+
+Present the document plan to the partner:
+
+> "Based on the PSA, I'll draft the following closing documents: [list]. Key terms I'll use: [buyer], [seller], [property address], [purchase price], [closing date], [jurisdiction]. Any adjustments?"
+
+Also flag:
+- Documents the PSA calls for that Sara cannot draft (e.g., lender-specific documents)
+- Terms Sara could not determine from available documents (will use placeholders)
+- Jurisdiction-specific requirements Sara plans to include
+
+Wait for confirmation or corrections.
+
+#### Step 3: Draft Each Document
+
+Sara drafts closing documents from scratch (no pre-built templates). For delegation: Sara extracts deal terms and provides precise specifications, then delegates individual document drafting to document-drafter if doing so improves quality. Sara reviews each draft before finalizing.
+
+**Deed (Special Warranty Deed -- standard for commercial RE unless PSA specifies otherwise):**
+- Grantor/Grantee (from PSA parties)
+- Consideration (purchase price)
+- Property description (legal description from PSA exhibits; use `[LEGAL DESCRIPTION]` placeholder if not available)
+- Warranty covenants limited to grantor's period of ownership
+- Subject to permitted exceptions (from PSA definition)
+- State-specific requirements:
+  - Witness/notary blocks (varies by state)
+  - Transfer tax language (where required)
+  - Recording information block
+  - Any state-specific statutory form language
+- Sara flags: jurisdiction requirements she cannot verify, unusual permitted exceptions
+
+**Assignment and Assumption of Leases:**
+- Assignor (seller) / Assignee (buyer)
+- Property description
+- Effective date (closing date)
+- Lease schedule (from PSA exhibits or tenant information; use `[LEASE SCHEDULE]` placeholder if not available)
+- Assignor assigns and assignee assumes all rights and obligations under the leases
+- Indemnification: assignor indemnifies for pre-closing breaches; assignee indemnifies for post-closing breaches
+- Prorations reference (rent prorations per PSA closing adjustment provisions)
+- Sara flags: leases requiring consent to assignment, leases with transfer restrictions
+
+**Estoppel Certificate (one per tenant, batched):**
+- Landlord name (buyer entity, post-closing; or current landlord name with assignment reference)
+- Tenant name, lease date, amendment dates
+- Premises description
+- Current base rent, percentage rent (if applicable), additional rent
+- Security deposit amount
+- Lease term (commencement, expiration, renewal options)
+- Prepaid rent
+- Tenant improvements or allowances outstanding
+- Defaults by landlord or tenant (certify none, or specify)
+- Options (renewal, expansion, ROFR, purchase option)
+- Sara extracts tenant information from PSA lease schedule and rent roll (if available); uses `[TENANT NAME]`, `[LEASE DATE]`, etc. placeholders for information not available
+- Produce separate files: `estoppel-[tenant-name-kebab].docx`
+- Process all tenants in one pass for efficiency
+
+**Escrow Holdback Agreement (only if PSA provides for holdback):**
+- Parties: buyer, seller, escrow agent (from PSA)
+- Holdback amount and source (typically portion of purchase price held in escrow)
+- Purpose of holdback (specific items: repairs, tenant improvements, title cure, etc.)
+- Release conditions (what must happen for funds to be released, to whom, in what amounts)
+- Timeline for completion of holdback items
+- Default provisions (what happens if conditions are not met within the timeline)
+- Dispute resolution for holdback disputes
+- Escrow agent provisions (liability limitation, resignation, fees)
+- Sara flags: holdback triggers she cannot determine from PSA alone
+
+For each document, Sara tracks:
+- Placeholders used (for cover note)
+- Provisions requiring partner review (for cover note)
+- Provisions populated from PSA that need verification (for cover note)
+- Issues noticed during drafting (for cover note and SARA.md)
+
+#### Step 4: Generate Cover Note
+
+Compile the cover note from items tracked during drafting. Structure the cover note with one section per document:
+
+```
+## Cover Note: Closing Documents -- [Property Name]
+
+### General Notes
+- Jurisdiction: [state] -- jurisdiction-specific provisions (deed formalities, transfer tax, notary requirements) included based on general legal knowledge. **Partner should verify compliance with current [state] requirements.**
+- [Any other cross-cutting notes]
+
+### Deed
+**Populated from PSA:** [list provisions successfully populated]
+**Requires partner review:**
+- [List specific provisions needing review]
+**Needs factual verification:**
+- [List items populated but needing confirmation]
+**Placeholders (unfilled):**
+- [List all [BRACKETED] placeholders in the deed]
+
+### Assignment and Assumption
+[Same structure]
+
+### Estoppel Certificates ([N] tenants)
+[Same structure]
+
+### Escrow Holdback Agreement
+[Same structure]
+
+### Issues Flagged
+- [Any concerning provisions noticed during extraction/drafting]
+```
+
+Every closing document set MUST have a cover note. A closing document without a cover note is an incomplete deliverable.
+
+#### Step 5: Update SARA.md
+
+- Update Deal Summary if new information was extracted
+- Append to Work Product Log: date, "Closing Documents", output file names, document count
+- Append to Issues Flagged: any new issues identified during drafting
