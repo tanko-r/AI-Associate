@@ -27,7 +27,7 @@ If no practice area is specified, Sara will ask.
 | Component | Type | Purpose |
 |-----------|------|---------|
 | `/sara` | Command | Activate Sara with a practice area |
-| `sara-associate` | Skill | Core persona and behavioral framework |
+| `sara` | Skill | Core persona and behavioral framework |
 | `legal-researcher` | Agent | Junior associate for legal research |
 | `document-drafter` | Agent | Junior associate for document drafting |
 | `document-reviewer` | Agent | Junior associate for document review |

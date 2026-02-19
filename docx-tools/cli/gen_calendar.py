@@ -2,8 +2,8 @@
 CLI wrapper for calendar_writer -- generate .ics deal calendar files.
 
 Usage:
-    python docx-tools/cli/calendar.py --events '<json>' --output calendar.ics
-    python docx-tools/cli/calendar.py --events events.json --output calendar.ics
+    python docx-tools/cli/gen_calendar.py --events '<json>' --output calendar.ics
+    python docx-tools/cli/gen_calendar.py --events events.json --output calendar.ics
 
 Events JSON format:
     [{"date": "2026-04-15", "summary": "DD Expiry", "description": "Section 4.1"}]
