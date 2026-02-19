@@ -30,9 +30,9 @@ Requirements for initial release. MVP scope: PSA review and deal-related workflo
 
 ### Deal Workflows
 
-- [ ] **DEAL-01**: Sara can generate a closing checklist and deal calendar from a finalized PSA
-- [ ] **DEAL-02**: Sara can draft title objection letters based on title commitment review
-- [ ] **DEAL-03**: Sara can draft standard closing and deal documents from a finalized PSA — including deeds, assignments, estoppels, escrow holdback agreements, and other closing deliverables a senior RE associate would prepare
+- [x] **DEAL-01**: Sara can generate a closing checklist and deal calendar from a finalized PSA
+- [x] **DEAL-02**: Sara can draft title objection letters based on title commitment review
+- [x] **DEAL-03**: Sara can draft standard closing and deal documents from a finalized PSA — including deeds, assignments, estoppels, escrow holdback agreements, and other closing deliverables a senior RE associate would prepare
 
 ### Collaborative Interaction
 
@@ -87,9 +87,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLGT-04 | Phase 1 | Complete |
 | KNOW-01 | Phase 2 | Complete |
 | KNOW-02 | Phase 2 | Complete |
-| DEAL-01 | Phase 3 | Pending |
-| DEAL-02 | Phase 3 | Pending |
-| DEAL-03 | Phase 3 | Pending |
+| DEAL-01 | Phase 3 | Complete |
+| DEAL-02 | Phase 3 | Complete |
+| DEAL-03 | Phase 3 | Complete |
 | COLB-01 | Phase 1 | Complete |
 | COLB-02 | Phase 1 | Complete |
 
