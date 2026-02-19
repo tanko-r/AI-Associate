@@ -78,10 +78,10 @@ Plans:
   4. Stale root-level `references/` directory is deleted
   5. gen_calendar.py docstring references the correct filename
   6. README.md uses the correct skill name `sara`
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 04-01-PLAN.md — Fix all 3 integration gaps (INT-01, INT-02, INT-03) and 3 tech debt items in a single plan (Wave 1)
+- [x] 04-01-PLAN.md — Fix all 3 integration gaps (INT-01, INT-02, INT-03) and 3 tech debt items in a single plan (Wave 1)
 
 ## Progress
 
@@ -93,4 +93,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Behavioral Foundation | 3/3 | Complete | 2026-02-18 |
 | 2. Knowledge Layer | 2/2 | Complete | 2026-02-19 |
 | 3. Deal Workflows | 3/3 | Complete | 2026-02-18 |
-| 4. Integration Fixes & Cleanup | 0/1 | Not started | - |
+| 4. Integration Fixes & Cleanup | 1/1 | Complete | 2026-02-19 |

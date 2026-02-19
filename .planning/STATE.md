@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Sara's work product must be thorough enough that a partner would approve it with light review — every clause examined, every risk flagged with specific alternative language, every deliverable complete.
-**Current focus:** Phase 3 — Deal Workflows (executing)
+**Current focus:** Phase 4 — Integration Fixes & Cleanup (executing)
 
 ## Current Position
 
-Phase: 3 of 3 (Deal Workflows) -- IN PROGRESS
-Plan: 3 of 3 in current phase -- ALL PLANS COMPLETE
-Status: Phase 3 execution complete -- awaiting verification
-Last activity: 2026-02-18 -- Completed all Phase 3 plans (03-01, 03-02, 03-03)
+Phase: 4 of 4 (Integration Fixes & Cleanup) -- IN PROGRESS
+Plan: 1 of 1 in current phase -- ALL PLANS COMPLETE
+Status: Phase 4 execution complete -- awaiting verification
+Last activity: 2026-02-19 -- Completed plan 04-01 (integration gaps + tech debt)
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 5 min
-- Total execution time: 41 min
+- Total execution time: 44 min
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: [█████████░] 92%
 | 1. Behavioral Foundation | 3/3 | 12 min | 4 min |
 | 2. Knowledge Layer | 2/2 | 10 min | 5 min |
 | 3. Deal Workflows | 3/3 | 19 min | 6 min |
+| 4. Integration Fixes & Cleanup | 1/1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (10 min), 02-02 (10 min), 03-01 (8 min), 03-02 (5 min), 03-03 (6 min)
-- Trend: Phase 3 plans moderate complexity -- behavioral specs with some tooling
+- Last 5 plans: 02-02 (10 min), 03-01 (8 min), 03-02 (5 min), 03-03 (6 min), 04-01 (3 min)
+- Trend: Phase 4 was surgical edits only -- fastest plan in the milestone
 
 *Updated after each plan completion*
 
@@ -74,6 +75,8 @@ Recent decisions affecting current work:
 - [03-03]: Closing documents drafted from scratch -- no pre-built templates; LLM legal knowledge with partner verification flag
 - [03-03]: Estoppels batched: all tenants processed in one pass, separate files per tenant
 - [03-03]: Document-drafter receives deal terms from Sara and produces complete drafts; Sara reviews before finalizing
+- [04-01]: Reference File Coverage field only in Contract-Reviser and Document-Reviewer templates -- other agents do not apply source markers
+- [04-01]: Use ${CLAUDE_PLUGIN_ROOT} prefix for canonical path references (matches existing codebase convention)
 
 ### Pending Todos
 
@@ -87,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-18
-Stopped at: Phase 3 all plans complete, awaiting verification
-Resume file: .planning/phases/03-deal-workflows/03-03-SUMMARY.md
+Last session: 2026-02-19
+Stopped at: Phase 4 all plans complete, awaiting verification
+Resume file: .planning/phases/04-integration-fixes-cleanup/04-01-SUMMARY.md
