@@ -13,7 +13,7 @@ Sara already exists as a functioning plugin with docx tooling and subagents. The
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Behavioral Foundation** - Rewrite Sara's orchestration logic, delegation model, and subagent prompts to produce partner-ready PSA reviews with complete transmittal packages (completed 2026-02-18)
-- [ ] **Phase 2: Knowledge Layer** - Build RE-specific stub files (checklist, clause library, market standards) with correct structure and placeholders that Sara loads during framework building and the user fills in over time
+- [x] **Phase 2: Knowledge Layer** - Build RE-specific stub files (checklist, clause library, market standards) with correct structure and placeholders that Sara loads during framework building and the user fills in over time (completed 2026-02-19)
 - [ ] **Phase 3: Deal Workflows** - Add closing checklist generation, title objection letter drafting, and closing document drafting (deeds, assignments, estoppels, holdbacks) as validated Sara capabilities
 
 ## Phase Details
@@ -31,9 +31,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 3/3 plans complete
 
 Plans:
-- [ ] 01-01-PLAN.md — Rewrite Sara SKILL.md: smart-defaults interaction model, aggressiveness-level definitions with coverage floors, milestone check-ins, quality gate checklist, quality loop spec, prompt-log format, transmittal package enforcement. Update contract-review-workflow.md with Step 5.5 and new transmittal format. Update commands/sara.md. (Wave 1)
-- [ ] 01-02-PLAN.md — Upgrade document-reviewer agent: anti-context-poisoning framing, Section A disposition table with 6 mandatory columns, Section B thematic risk map with compound risk analysis, conforming changes identification, mandatory market citations. (Wave 2, depends on 01-01)
-- [ ] 01-03-PLAN.md — Upgrade contract-reviser, document-drafter, legal-researcher agents and reference files: anti-context-poisoning framing, mandatory delegation briefing template, quality loop protocol, delegation logging format, market rationale requirements, transmittal memo format, .msg delivery standard. (Wave 3, depends on 01-01 + 01-02)
+- [x] 01-01-PLAN.md — Rewrite Sara SKILL.md: smart-defaults interaction model, aggressiveness-level definitions with coverage floors, milestone check-ins, quality gate checklist, quality loop spec, prompt-log format, transmittal package enforcement. Update contract-review-workflow.md with Step 5.5 and new transmittal format. Update commands/sara.md. (Wave 1)
+- [x] 01-02-PLAN.md — Upgrade document-reviewer agent: anti-context-poisoning framing, Section A disposition table with 6 mandatory columns, Section B thematic risk map with compound risk analysis, conforming changes identification, mandatory market citations. (Wave 2, depends on 01-01)
+- [x] 01-03-PLAN.md — Upgrade contract-reviser, document-drafter, legal-researcher agents and reference files: anti-context-poisoning framing, mandatory delegation briefing template, quality loop protocol, delegation logging format, market rationale requirements, transmittal memo format, .msg delivery standard. (Wave 3, depends on 01-01 + 01-02)
 
 ### Phase 2: Knowledge Layer
 **Goal**: Sara has RE-specific stub files she loads during Step 3 (framework building) — a PSA review checklist with correct section structure and per-category risk placeholders, and clause library and market standards stubs the user can populate with model language over time; Sara uses whatever content is present, even if stubs are only partially filled
@@ -43,11 +43,11 @@ Plans:
   1. During PSA review Step 3, Sara loads a RE-specific checklist stub that has the correct section structure (DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions) with per-category target risk lists and clearly marked placeholders for user content
   2. Sara loads clause library and market-standards stubs that have correct section headers and placeholder structure — files are usable as-is and improve as the user adds content, without requiring full authoring before Sara can function
   3. The stub files ship as templates: structure, section headers, example placeholders, and instructions for how the user populates them — no substantive legal content authored by this project
-**Plans**: 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
-- [ ] 02-01-PLAN.md — Create re-checklist-psa.md stub: 24-category PSA review checklist with comprehensive sub-items sourced from 3 sample documents, Key Risks tables with buyer/seller columns, [Common]/[Specialized] tags, [TODO] placeholders, cross-references to market-standards.md (Wave 1)
-- [ ] 02-02-PLAN.md — Create clause-library.md and market-standards.md stubs with matching 24-category structure; wire Sara to load all 3 files during Step 3 with selective loading, coverage reporting, † LLM-source markers, and missing provisions report (Wave 1)
+- [x] 02-01-PLAN.md — Create re-checklist-psa.md stub: 24-category PSA review checklist with comprehensive sub-items sourced from 3 sample documents, Key Risks tables with buyer/seller columns, [Common]/[Specialized] tags, [TODO] placeholders, cross-references to market-standards.md (Wave 1)
+- [x] 02-02-PLAN.md — Create clause-library.md and market-standards.md stubs with matching 24-category structure; wire Sara to load all 3 files during Step 3 with selective loading, coverage reporting, † LLM-source markers, and missing provisions report (Wave 1)
 
 ### Phase 3: Deal Workflows
 **Goal**: Sara can handle the full closing phase of a deal — generating a closing checklist and deal calendar from a finalized PSA, drafting title objection letters from a title commitment, and drafting standard closing documents (deeds, assignments, estoppels, escrow holdback agreements, and other closing deliverables a senior RE associate would prepare)
@@ -72,6 +72,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Behavioral Foundation | 0/3 | Complete    | 2026-02-18 |
-| 2. Knowledge Layer | 0/2 | Not started | - |
+| 1. Behavioral Foundation | 3/3 | Complete | 2026-02-18 |
+| 2. Knowledge Layer | 2/2 | Complete | 2026-02-19 |
 | 3. Deal Workflows | 0/3 | Not started | - |

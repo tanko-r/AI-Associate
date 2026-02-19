@@ -39,7 +39,7 @@ Sara's work product must be thorough enough that a partner would approve it with
 - [ ] Sara can write correspondence (demand letters, transmittal memos, comment letters to opposing counsel)
 - [ ] Sara can review title commitments and underlying title documents
 - [ ] Sara has RAG capabilities to draw from a user-provided library of source material
-- [ ] Sara's knowledge combines reference materials (checklists, clause libraries) with LLM legal reasoning
+- [x] Sara's knowledge combines reference materials (checklists, clause libraries) with LLM legal reasoning -- Phase 2: 3 reference files (checklist, clause library, market standards) wired into Step 3 with coverage reporting and source markers
 
 ### Out of Scope
 
@@ -53,10 +53,10 @@ Sara's work product must be thorough enough that a partner would approve it with
 Sara already exists as a working plugin with docx tools, subagents, and a contract review workflow. The core problem is quality — a PSA review test produced ~10 superficial changes when a real associate would have produced dozens of substantive markups. The architecture (plugin, tools, agents) is sound; the behavioral framework, delegation precision, and domain knowledge depth need significant improvement.
 
 Key existing components:
-- `skills/sara/SKILL.md` — behavioral framework (needs major rework)
-- `agents/` — 4 subagent definitions (need precision and quality standards)
+- `skills/sara/SKILL.md` — behavioral framework (rewritten Phase 1, reference files added Phase 2)
+- `agents/` — 4 subagent definitions (rewritten Phase 1, source markers added Phase 2)
 - `docx-tools/` — document processing pipeline (working, adequate)
-- `references/` — workflow guides and standards (need expansion with RE-specific content)
+- `skills/sara/references/` — workflow guides, RE-specific checklist, clause library, and market standards (expanded Phase 1-2)
 
 The user is a practicing real estate attorney who will provide source materials and evaluate work product against professional standards.
 
@@ -80,5 +80,9 @@ The user is a practicing real estate attorney who will provide source materials 
 | RAG for user-provided source library | Large reference library can't fit in context; needs retrieval system | — Pending |
 | Existing docx tooling is adequate | Problem is Sara's brain (prompting/architecture), not her hands (tools) | — Pending |
 
+| Reference files are stubs with [TODO] placeholders | User populates firm content; Sara degrades gracefully to LLM knowledge with explicit disclosure | -- Phase 2 |
+| Source markers (dagger) distinguish checklist-backed vs LLM-backed assessments | Partner sees which items are grounded in firm data vs general knowledge | -- Phase 2 |
+| Missing provisions report after disposition table | Identifies PSA gaps against the checklist; Common items always reported, Specialized only when context-relevant | -- Phase 2 |
+
 ---
-*Last updated: 2026-02-17 after initialization*
+*Last updated: 2026-02-19 after Phase 2*
