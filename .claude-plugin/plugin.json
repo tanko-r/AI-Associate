@@ -5,5 +5,7 @@
   "author": {
     "name": "David"
   },
-  "keywords": ["legal", "law", "associate", "attorney", "research"]
+  "repository": "https://github.com/tanko-r/AI-Associate",
+  "license": "MIT",
+  "keywords": ["legal", "law", "associate", "attorney", "research", "contracts", "real-estate"]
 }
