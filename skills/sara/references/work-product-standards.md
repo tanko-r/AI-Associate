@@ -258,3 +258,100 @@ The .msg file should be a complete, ready-to-forward package: open in Outlook, r
 - Run a cross-reference check before generating the redline
 - Propose new provisions where the existing agreement is missing market-standard protections
 - Always run `analyze_contract` before starting the review
+
+## Closing Checklist
+
+### Structure
+
+1. **Key Dates** table at top of the checklist:
+   | Milestone | Date | PSA Reference |
+   Populated with the deal's critical milestones (effective date, DD expiry, title objection deadline, closing date, post-closing deadlines).
+
+2. **Items by responsible party** -- each party's section as a separate table:
+
+   **Buyer Responsibilities**
+   | # | Item | Deadline | PSA Ref | Status | Notes |
+
+   **Seller Responsibilities**
+   | # | Item | Deadline | PSA Ref | Status | Notes |
+
+   **Escrow/Title Company**
+   | # | Item | Deadline | PSA Ref | Status | Notes |
+
+   **Lender** (if applicable)
+   | # | Item | Deadline | PSA Ref | Status | Notes |
+
+### Column Standards
+
+- **Item** -- specific to this PSA, not generic. "Deliver Phase I Environmental Report per Section 4.1(c)" not "Complete environmental inspections"
+- **Deadline** -- absolute date or relative period from PSA. "April 15, 2026" or "15 days after Effective Date (Section 4.1)"
+- **PSA Ref** -- section reference. Every item must have one.
+- **Status** -- default: Pending. User updates to Received/Waived/Complete as applicable.
+- **Notes** -- dependency flags ("Depends on receipt of title commitment"), special conditions, cross-references to other items
+
+### Quality Standards
+
+- Every item tied to a specific PSA provision -- no generic entries
+- Minimum 15 items for a standard PSA
+- Dependencies noted in Notes column
+- Deadlines converted to absolute dates where the effective date is known
+- Items ordered chronologically within each responsible party section
+
+## Deal Calendar (.ics)
+
+### Standards
+
+- Contains key milestones only (4-8 events typical) -- not every checklist item
+- All-day events (not timed)
+- Description field includes PSA section reference (e.g., "Due diligence period expiration per Section 4.1")
+- File naming: `calendar-[property-shortname].ics`
+- Multi-VEVENT format for single Outlook import
+- Generated via `calendar_writer.py`
+
+## Title Objection Letter
+
+[Standards completed in Plan 03-02]
+
+## Title Summary Memo
+
+[Standards completed in Plan 03-02]
+
+## Closing Documents
+
+[Standards completed in Plan 03-03]
+
+## Cover Note (Deal Workflows)
+
+Every deal workflow output includes a cover note. The cover note is structured with one section per document:
+
+### Structure
+
+```
+## Cover Note: [Workflow Type] -- [Property Name]
+
+### General Notes
+- Jurisdiction: [state] -- [any cross-cutting notes]
+
+### [Document 1 Name]
+**Populated from PSA:** [list provisions successfully populated]
+**Requires partner review:**
+- [List specific provisions needing review with section references]
+**Needs factual verification:**
+- [List items populated but needing confirmation]
+**Placeholders (unfilled):**
+- [List all [BRACKETED] placeholders]
+
+### [Document 2 Name]
+[Same structure]
+
+### Issues Flagged
+- [Any concerning provisions noticed during extraction/drafting]
+```
+
+### Standards
+
+- Every closing document set MUST have a cover note -- a closing document without a cover note is an incomplete deliverable
+- Distinguish "needs partner review" (legal judgment calls) from "needs factual verification" (deal data confirmation)
+- List specific provisions by section reference -- not vague categories
+- Every [BRACKETED PLACEHOLDER] in the output documents must appear in the cover note
+- Recommendations are specific and actionable: "Verify legal description against survey" not "Check property details"
