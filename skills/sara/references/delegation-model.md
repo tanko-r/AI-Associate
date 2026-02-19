@@ -127,6 +127,32 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 - [Document-type-specific requirements]
 ```
 
+### Closing Document Briefing Template (Document-Drafter)
+
+```markdown
+## Delegation Briefing -- Closing Document Drafting
+
+**Matter:** [matter name]
+**Document type:** [deed / assignment / estoppel / holdback]
+**Jurisdiction:** [state, if applicable]
+
+### Deal Terms
+[Extracted deal terms relevant to this document: parties, property, purchase price, closing date, etc.]
+
+### Document-Specific Terms
+[Terms specific to this document type: permitted exceptions for deed, lease schedule for assignment, tenant info for estoppel, holdback terms for holdback]
+
+### Jurisdiction Notes
+[State-specific requirements Sara has identified, or "Use generic formalities -- jurisdiction TBD"]
+
+### Output Requirements
+- Save to: [path]
+- File name: [deal-specific name per naming convention]
+- Format: docx via write_docx
+- Use [BRACKETED] placeholders for any information not provided
+- Flag any provisions where you made assumptions: [NOTE: Assumed X because Y]
+```
+
 **Adaptation note:** Not every field applies to every delegation. The templates above are type-specific. But the required fields from DLGT-01 are always present where applicable: representation, aggressiveness (when relevant), target risk list or disposition entries (when applicable), paragraph IDs (when applicable), defined terms (when applicable), and explicit output format (always).
 
 ## Quality Loop Protocol (DLGT-02, DLGT-03)
@@ -194,6 +220,7 @@ The quality loop ensures every piece of subagent work meets Sara's standards bef
 - Drafting sections of a larger document Sara is assembling
 - Transmittal package assembly from Sara's analysis outputs
 - Converting Sara's outline into a full draft
+- Closing document drafting from Sara's extracted deal terms (deeds, assignments, estoppels, holdbacks)
 
 ### Do NOT delegate:
 - High-judgment calls about strategy or risk

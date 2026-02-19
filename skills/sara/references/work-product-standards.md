@@ -366,7 +366,94 @@ The .msg file should be a complete, ready-to-forward package: open in Outlook, r
 
 ## Closing Documents
 
-[Standards completed in Plan 03-03]
+### General Standards
+
+- Every closing document is drafted from scratch (no pre-built templates)
+- Professional legal document formatting: numbered sections, signature blocks, defined terms
+- State-specific provisions when jurisdiction is specified
+- `[BRACKETED]` placeholders for information not available -- never invent facts
+- Each document is a separate file with deal-specific naming
+- Cover note always accompanies closing document set
+- Each document is self-contained and independently executable
+
+### Special Warranty Deed
+
+**Structure:**
+1. **Preamble** -- grantor, grantee (full legal names), consideration
+2. **Granting clause** -- conveyance language ("does hereby grant, bargain, sell and convey...")
+3. **Property description** -- legal description from PSA exhibits (or `[LEGAL DESCRIPTION]` placeholder)
+4. **Habendum** -- "to have and to hold" with the fee simple estate
+5. **Warranty covenants** -- limited to grantor's period of ownership ("by, through, or under Grantor, but not otherwise")
+6. **Subject-to clause** -- subject to permitted exceptions (from PSA definition)
+7. **Execution block** -- witnesses, notary acknowledgment, recording information
+
+**Standards:**
+- Warranty limited to grantor's period of ownership -- not a general warranty deed
+- Consideration stated (purchase price)
+- Property description from PSA exhibits -- never abbreviated or summarized
+- Permitted exceptions referenced by PSA definition
+- State-specific: deed type conventions (some states use "grant deed" or "bargain and sale deed"), witness requirements, notary format, transfer tax language, recording page
+
+### Assignment and Assumption of Leases
+
+**Structure:**
+1. **Preamble** -- assignor (seller), assignee (buyer), date
+2. **Recitals** -- reference to PSA, property description, closing, existence of leases
+3. **Assignment clause** -- assignor assigns all right, title, and interest in the leases
+4. **Assumption clause** -- assignee assumes all obligations under the leases from and after the effective date
+5. **Indemnification** -- assignor indemnifies for pre-closing breaches; assignee indemnifies for post-closing breaches
+6. **Prorations reference** -- rent prorations per PSA closing adjustment provisions
+7. **General provisions** -- governing law, successors and assigns, counterparts
+8. **Signature blocks**
+9. **Exhibit: Lease Schedule** -- list of leases being assigned
+
+**Standards:**
+- Effective as of closing date
+- Clear allocation of pre/post-closing liability
+- Lease schedule attached as exhibit (or `[LEASE SCHEDULE]` placeholder)
+- Cross-reference to PSA proration provisions
+
+### Estoppel Certificate
+
+**Structure:**
+1. **Tenant and lease identification** -- tenant name, lease date, amendment dates, premises
+2. **Certifications:**
+   - Current base rent, percentage rent (if applicable), additional rent
+   - Security deposit amount held by landlord
+   - Lease term: commencement, expiration, renewal options
+   - Prepaid rent (months paid in advance, if any)
+   - Tenant improvements or allowances outstanding
+   - Defaults by landlord or tenant (certify none, or specify)
+   - Options: renewal, expansion, right of first refusal, purchase option
+3. **Certification statement** -- tenant certifies the foregoing to buyer and buyer's lender
+4. **Signature block** -- tenant authorized signatory
+
+**Standards:**
+- One file per tenant (`estoppel-[tenant-name-kebab].docx`)
+- Addressed to buyer and buyer's lender (if applicable)
+- All material lease terms certified
+- Batched: all tenants processed together, separate files
+- Use `[TENANT NAME]`, `[LEASE DATE]`, etc. placeholders for missing information
+
+### Escrow Holdback Agreement
+
+**Structure:**
+1. **Preamble** -- buyer, seller, escrow agent (from PSA)
+2. **Recitals** -- reference to PSA, closing, purpose of holdback
+3. **Holdback amount and purpose** -- specific amount, source (portion of purchase price), specific items covered
+4. **Release conditions** -- what must happen for funds to be released, to whom, in what amounts
+5. **Timeline** -- deadlines for completion of holdback items
+6. **Default provisions** -- consequences if conditions are not met within the timeline
+7. **Dispute resolution** -- mechanism for resolving holdback disputes
+8. **Escrow agent provisions** -- liability limitation, resignation, fees, interpleader rights
+9. **General provisions** -- governing law, notices, amendments, counterparts
+10. **Signature blocks** -- all three parties
+
+**Standards:**
+- Specific release conditions (not vague)
+- Timeline for completion with defined deadlines
+- Clear default consequences (who gets the money if conditions fail)
+- Escrow agent protections (standard for commercial escrows)
 
 ## Cover Note (Deal Workflows)
 
