@@ -43,11 +43,11 @@ Plans:
   1. During PSA review Step 3, Sara loads a RE-specific checklist stub that has the correct section structure (DD period, title cure, deposit mechanics, representations, indemnification, default remedies, closing conditions, AS-IS provisions) with per-category target risk lists and clearly marked placeholders for user content
   2. Sara loads clause library and market-standards stubs that have correct section headers and placeholder structure — files are usable as-is and improve as the user adds content, without requiring full authoring before Sara can function
   3. The stub files ship as templates: structure, section headers, example placeholders, and instructions for how the user populates them — no substantive legal content authored by this project
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Create re-checklist-psa.md stub — correct section structure for all PSA provision categories, per-category target risk list skeletons, placeholder content with instructions for user to complete
-- [ ] 02-02: Create clause-library.md and market-standards.md stubs — correct section headers, placeholder structure for model language entries, instructions for user population; wire Sara to load all three files during Step 3
+- [ ] 02-01-PLAN.md — Create re-checklist-psa.md stub: 24-category PSA review checklist with comprehensive sub-items sourced from 3 sample documents, Key Risks tables with buyer/seller columns, [Common]/[Specialized] tags, [TODO] placeholders, cross-references to market-standards.md (Wave 1)
+- [ ] 02-02-PLAN.md — Create clause-library.md and market-standards.md stubs with matching 24-category structure; wire Sara to load all 3 files during Step 3 with selective loading, coverage reporting, † LLM-source markers, and missing provisions report (Wave 1)
 
 ### Phase 3: Deal Workflows
 **Goal**: Sara can handle the full closing phase of a deal — generating a closing checklist and deal calendar from a finalized PSA, drafting title objection letters from a title commitment, and drafting standard closing documents (deeds, assignments, estoppels, escrow holdback agreements, and other closing deliverables a senior RE associate would prepare)
