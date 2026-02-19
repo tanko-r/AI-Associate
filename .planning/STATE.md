@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Sara's work product must be thorough enough that a partner would approve it with light review — every clause examined, every risk flagged with specific alternative language, every deliverable complete.
-**Current focus:** Phase 3 — Deal Workflows (not yet planned)
+**Current focus:** Phase 3 — Deal Workflows (executing)
 
 ## Current Position
 
-Phase: 2 of 3 (Knowledge Layer) -- COMPLETE
-Plan: 2 of 2 in current phase -- ALL PLANS COMPLETE
-Status: Phase 2 Complete -- Phase 3 not yet planned
-Last activity: 2026-02-19 -- Completed Phase 2 execution and verification
+Phase: 3 of 3 (Deal Workflows) -- IN PROGRESS
+Plan: 1 of 3 in current phase -- Plan 03-01 complete
+Status: Executing Phase 3 -- Plan 03-01 done, moving to Wave 2 (03-02, 03-03)
+Last activity: 2026-02-18 -- Completed Plan 03-01 (closing checklist foundation)
 
-Progress: [██████░░░░] 67%
+Progress: [████████░░] 78%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 5 min
-- Total execution time: 22 min
+- Total execution time: 30 min
 
 **By Phase:**
 
@@ -29,10 +29,11 @@ Progress: [██████░░░░] 67%
 |-------|-------|-------|----------|
 | 1. Behavioral Foundation | 3/3 | 12 min | 4 min |
 | 2. Knowledge Layer | 2/2 | 10 min | 5 min |
+| 3. Deal Workflows | 1/3 | 8 min | 8 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (2 min), 01-03 (3 min), 02-01 (10 min), 02-02 (10 min)
-- Trend: Knowledge layer plans take longer due to document extraction and large file creation
+- Last 5 plans: 01-03 (3 min), 02-01 (10 min), 02-02 (10 min), 03-01 (8 min)
+- Trend: Deal workflow plans moderate complexity -- tooling + behavioral specs
 
 *Updated after each plan completion*
 
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - [02-02]: Source marker uses dagger symbol for LLM-sourced items in disposition table and transmittal memo
 - [02-02]: Reference file loading is best-effort with graceful degradation -- never blocks a review
 - [02-02]: Selective loading pattern: read category index first, then only relevant categories to manage context budget
+- [03-01]: CLI calendar wrapper named gen_calendar.py to avoid shadowing Python stdlib calendar module
+- [03-01]: Table cell text rendered through _add_inline_markdown() for bold/italic support in table cells
+- [03-01]: Deal workflows defined in single reference file (deal-workflows.md) with common patterns section
 
 ### Pending Todos
 
@@ -79,5 +83,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-deal-workflows/03-CONTEXT.md
+Stopped at: Phase 3 Wave 1 complete, starting Wave 2
+Resume file: .planning/phases/03-deal-workflows/03-01-SUMMARY.md
