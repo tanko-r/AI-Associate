@@ -83,6 +83,11 @@ The user is a practicing real estate attorney who will provide source materials 
 | Reference files are stubs with [TODO] placeholders | User populates firm content; Sara degrades gracefully to LLM knowledge with explicit disclosure | -- Phase 2 |
 | Source markers (dagger) distinguish checklist-backed vs LLM-backed assessments | Partner sees which items are grounded in firm data vs general knowledge | -- Phase 2 |
 | Missing provisions report after disposition table | Identifies PSA gaps against the checklist; Common items always reported, Specialized only when context-relevant | -- Phase 2 |
+| Closing documents drafted from scratch, no pre-built templates | LLM legal knowledge with mandatory partner verification flags in cover note | -- Phase 3 |
+| Three-bucket title exception categorization (Accept/Object/Review) | Review items need partner decision before inclusion in objection letter | -- Phase 3 |
+| Deal context persists in SARA.md across workflow invocations | Avoids re-extracting terms from source documents on each workflow | -- Phase 3 |
+| Reference File Coverage field in delegation briefing templates | Subagents know which checklist categories have firm content vs placeholders | -- Phase 4 |
+| Canonical path references use ${CLAUDE_PLUGIN_ROOT} prefix | Consistent path convention across all reference files | -- Phase 4 |
 
 ---
-*Last updated: 2026-02-19 after Phase 2*
+*Last updated: 2026-02-19 after Phase 4 (v1.0 milestone complete)*
