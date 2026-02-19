@@ -58,12 +58,12 @@ Plans:
   2. Given a title commitment, Sara produces a title objection letter that identifies Schedule B-II exceptions requiring curative action, specifies the cure required for each, and sets a reasonable objection deadline
   3. Given a finalized PSA and deal context, Sara drafts standard closing documents — including at minimum a deed, assignment and assumption agreement, and estoppel certificate — populated with deal-specific terms extracted from the PSA
   4. Sara's closing document drafts include a cover note identifying which provisions require partner review, deal-specific insertions that need verification, and any provisions she could not populate from available documents
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 03-01: Build closing checklist workflow — PSA-to-checklist extraction, deal calendar generation, responsible-party organization
-- [ ] 03-02: Build title objection letter workflow — title commitment review, Schedule B-II exception analysis, objection letter drafting
-- [ ] 03-03: Build closing document drafting workflow — deed, assignment and assumption, estoppel certificate, and escrow holdback agreement templates; Sara extracts deal terms from PSA and populates drafts with cover note flagging items for partner review
+- [ ] 03-01-PLAN.md — Enhance write_docx with table and list rendering, create calendar_writer.py for .ics generation, create deal-workflows.md with Workflow 1 (closing checklist), add SARA.md persistence to SKILL.md, update work-product-standards.md with checklist and calendar standards (Wave 1)
+- [ ] 03-02-PLAN.md — Define Workflow 2 (title objection letter + title summary memo) in deal-workflows.md with three-bucket exception categorization (Accept/Object/Review), add title letter and memo standards to work-product-standards.md (Wave 2, depends on 03-01)
+- [ ] 03-03-PLAN.md — Define Workflow 3 (closing document drafting) in deal-workflows.md for deeds, assignments, estoppels, and holdbacks; update document-drafter.md and delegation-model.md with closing document patterns; add closing document standards to work-product-standards.md (Wave 2, depends on 03-01)
 
 ## Progress
 
