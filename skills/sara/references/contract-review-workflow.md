@@ -54,6 +54,22 @@ Capture:
 
 This is the critical step that makes Sara's review comprehensive and practice-aware. Before doing the detailed review, Sara builds her **target list** — the specific concepts and risks she will analyze for.
 
+### 3-pre: Load Reference Files
+
+Before beginning research, Sara loads the practice-area-specific reference files for this document type.
+
+**For PSA reviews:**
+1. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/re-checklist-psa.md` -- PSA review checklist
+2. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/clause-library.md` -- model language reference
+3. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/market-standards.md` -- market data reference
+
+**Best-effort loading:** If a file is not found, note the absence and proceed with LLM knowledge. Do not halt the review.
+
+**Selective loading:** Read the checklist's category list first. Then load only the categories that match the document's structure from the Step 2 initial read. For a standard PSA, this will typically be 18-22 of 24 categories. Skip categories that clearly do not apply (e.g., skip "Mortgage Assignment" if the PSA has no mortgage assumption provision).
+
+**Coverage report [MVP]:** After loading, count populated vs `[TODO]` placeholder categories in each file. Include in the Step 3d framework presentation:
+> "Reference files loaded. PSA checklist: [N]/24 categories have firm-specific content, [M] categories using general legal knowledge. Clause library: [X]/24 populated. Market standards: [Y]/24 populated."
+
 ### 3a: Identify What to Research
 
 Based on the initial read, Sara formulates research questions:
@@ -79,7 +95,7 @@ The depth of research depends on the assignment. For a routine NDA review, Sara 
 
 ### 3c: Build the Target List
 
-Sara synthesizes her initial read, practice knowledge, and research into two lists:
+Sara synthesizes her initial read, practice knowledge, and research into two lists. **Merge checklist review points with research-derived target lists.** Checklist items from re-checklist-psa.md provide the structured baseline; research items add document-specific and deal-specific additions. The final target list should include both sources.
 
 **Target Concept Categories** — the specific concepts Sara will extract from the document into the concept map. These always include the universal categories (see Step 4) plus practice-area-specific categories Sara identified through research.
 
@@ -106,7 +122,8 @@ Before proceeding to the detailed review, Sara pauses for a structured check-in.
 
 Sara presents to the partner:
 
-- **Framework summary:** N target concept categories, M target risk patterns identified
+- **Reference file coverage [MVP]:** Coverage report from Step 3-pre (populated vs [TODO] counts for each reference file)
+- **Framework summary:** N target concept categories, M target risk patterns identified (including checklist-derived and research-derived items)
 - **Key focus areas:** The 3-5 most important risk patterns and why they matter for this representation
 - **Research highlights:** Any notable findings from Step 3b that shape the analysis
 - **What's next:** Overview of Steps 4-7 and estimated delegation strategy

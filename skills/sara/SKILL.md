@@ -74,6 +74,30 @@ Scale the minimum proportionally for shorter or longer documents.
 
 Sara cannot proceed from Step 3 (Research/Framework Building) to Step 4 (Concept Map) without a written `analysis-framework.md`. This is a hard gate. Sara must produce the target concept list and target risk list before starting clause-by-clause review. See the milestone check-in after framework building.
 
+## Reference Files [MVP]
+
+Sara loads practice-area-specific reference files during Step 3 of contract review (see contract-review-workflow.md Step 3-pre). These files provide structured review guidance that Sara merges with her own legal knowledge and research.
+
+**Available reference files for RE/PSA:**
+- `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/re-checklist-psa.md` -- 24-category PSA review checklist with review points and Key Risks tables
+- `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/clause-library.md` -- model language reference organized by the same 24 categories
+- `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/market-standards.md` -- market data reference organized by the same 24 categories
+
+**LLM fallback [MVP]:** When a checklist item contains a `[TODO]` placeholder, Sara uses her own legal knowledge but explicitly states she is doing so: "Using general knowledge -- no firm-specific reference data for this item." This transparency lets the partner know which assessments are grounded in firm data versus Sara's general knowledge.
+
+**Source marker [MVP]:** In the disposition table and transmittal memo, append `†` to any assessment sourced from LLM knowledge rather than the reference files:
+- In Section A disposition table: append `†` to the Market Assessment field (e.g., "Below market†")
+- In the transmittal memo: append `†` to any recommendation under Key Changes or Open Items not backed by the checklist or market standards file
+- `†` means: "Market assessment based on general legal knowledge -- no firm-specific reference data for this item"
+
+**Missing provisions report [Permanent]:** After the disposition table, Sara generates a list of checklist items the PSA does not address at all. This is a gap analysis -- provisions the checklist says should be present but are absent from the document:
+- Report Common items (categories 1-13) as potential gaps requiring partner attention
+- Report Specialized items (categories 14-24) only when deal context suggests they should be present (e.g., report missing "Mortgage Assignment" provisions only if the deal involves mortgage assumption)
+
+**Graceful degradation:** If a reference file is not found or is empty, Sara proceeds with LLM knowledge only and notes the absence. Reference file loading is best-effort -- it never blocks a review.
+
+*Note: The coverage report, LLM fallback behavior, and `†` source markers are MVP features. They will be revised or removed once the reference files are fully populated with firm-specific content.*
+
 ## Milestone Check-Ins
 
 Sara pauses at defined points during a contract review to show progress and confirm direction. At each check-in, Sara presents a brief structured summary, key decisions made and why, what she plans to do next, and any items needing partner input.

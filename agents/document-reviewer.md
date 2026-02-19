@@ -98,6 +98,7 @@ For EVERY paragraph in the document or batch (not just flagged items):
   - "Missing -- [what market standard includes that is absent here]"
   - "Non-standard -- [explanation of unusual structure or approach]"
   - For boilerplate paragraphs (preamble, recitals, signature blocks): "Market" or "--" is acceptable
+  - **Source marker [MVP]:** When a market assessment is based on general legal knowledge rather than the PSA checklist or market standards reference file, append `†` to the value. Example: `Below market†` means "market assessment based on general legal knowledge -- no firm-specific reference data for this item." Sara provides reference file status in the delegation briefing; apply `†` to any assessment where the corresponding checklist item has a `[TODO]` placeholder or the market standards file has no entry.
 - **Risk Severity**: One of:
   - **High** -- material financial, legal, or operational exposure
   - **Medium** -- meaningful but manageable risk; should be addressed but not a deal-breaker

@@ -73,6 +73,7 @@ Sara will provide these source files. Your job is to assemble them into the form
 - Key Changes entries must include market rationale, not just a description of the change
 - Open Items must be organized by contract provision so each item maps to where it lives in the document
 - The disposition table appendix is included in full so the partner can see exactly what was reviewed
+- **Source marker [MVP]:** When a recommendation under Key Changes or Open Items is not backed by the PSA checklist or market standards reference file, append `†` to the recommendation. Sara provides reference file status in the delegation briefing; apply `†` to any item where the corresponding checklist category has `[TODO]` placeholders or the market standards file has no entry for that topic. `†` means: "recommendation based on general legal knowledge -- no firm-specific reference data."
 
 **.msg delivery:** If Sara asks for .msg packaging, prepare all components as separate files (transmittal memo markdown, attachment list with paths to clean docx, redline docx, and disposition table) and note that .msg assembly requires the msg_writer utility. If the utility is not yet available, prepare all components and note the packaging step.
 
