@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 3 of 3 (Deal Workflows) -- IN PROGRESS
-Plan: 1 of 3 in current phase -- Plan 03-01 complete
-Status: Executing Phase 3 -- Plan 03-01 done, moving to Wave 2 (03-02, 03-03)
-Last activity: 2026-02-18 -- Completed Plan 03-01 (closing checklist foundation)
+Plan: 3 of 3 in current phase -- ALL PLANS COMPLETE
+Status: Phase 3 execution complete -- awaiting verification
+Last activity: 2026-02-18 -- Completed all Phase 3 plans (03-01, 03-02, 03-03)
 
-Progress: [████████░░] 78%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 8
 - Average duration: 5 min
-- Total execution time: 30 min
+- Total execution time: 41 min
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [████████░░] 78%
 |-------|-------|-------|----------|
 | 1. Behavioral Foundation | 3/3 | 12 min | 4 min |
 | 2. Knowledge Layer | 2/2 | 10 min | 5 min |
-| 3. Deal Workflows | 1/3 | 8 min | 8 min |
+| 3. Deal Workflows | 3/3 | 19 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (3 min), 02-01 (10 min), 02-02 (10 min), 03-01 (8 min)
-- Trend: Deal workflow plans moderate complexity -- tooling + behavioral specs
+- Last 5 plans: 02-01 (10 min), 02-02 (10 min), 03-01 (8 min), 03-02 (5 min), 03-03 (6 min)
+- Trend: Phase 3 plans moderate complexity -- behavioral specs with some tooling
 
 *Updated after each plan completion*
 
@@ -69,6 +69,11 @@ Recent decisions affecting current work:
 - [03-01]: CLI calendar wrapper named gen_calendar.py to avoid shadowing Python stdlib calendar module
 - [03-01]: Table cell text rendered through _add_inline_markdown() for bold/italic support in table cells
 - [03-01]: Deal workflows defined in single reference file (deal-workflows.md) with common patterns section
+- [03-02]: Three-bucket categorization (Accept/Object/Review) with mandatory cure action for every Object item
+- [03-02]: Review items appear in memo but NOT in letter -- partner must decide before sending
+- [03-03]: Closing documents drafted from scratch -- no pre-built templates; LLM legal knowledge with partner verification flag
+- [03-03]: Estoppels batched: all tenants processed in one pass, separate files per tenant
+- [03-03]: Document-drafter receives deal terms from Sara and produces complete drafts; Sara reviews before finalizing
 
 ### Pending Todos
 
@@ -83,5 +88,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Phase 3 Wave 1 complete, starting Wave 2
-Resume file: .planning/phases/03-deal-workflows/03-01-SUMMARY.md
+Stopped at: Phase 3 all plans complete, awaiting verification
+Resume file: .planning/phases/03-deal-workflows/03-03-SUMMARY.md
