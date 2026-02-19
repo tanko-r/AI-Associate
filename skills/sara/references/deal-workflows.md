@@ -183,29 +183,125 @@ Include the full deadline summary table. Wait for confirmation or corrections. A
 
 ## Workflow 2: Title Objection Letter from Title Commitment
 
-[STUB -- completed in Plan 03-02]
-
 ### Purpose
 
-Review a title commitment, categorize exceptions, and produce a title objection letter with a companion title summary memo.
+Review a title commitment, categorize Schedule B-II exceptions using a three-bucket system (Accept/Object/Review), draft a title objection letter specifying cure actions for objections, and produce a companion title summary memo for the client.
 
 ### Input
 
 - Title commitment (required)
-- PSA (optional -- for cross-reference and objection deadline)
-- Survey (optional -- for cross-reference)
-- Letter template .docx (optional)
-- SARA.md (if it exists)
+- PSA (optional -- for cross-reference, objection deadline extraction, permitted exceptions definition)
+- Survey (optional -- for cross-reference with survey exceptions)
+- Other documents (optional -- Sara uses whatever is provided)
+- Letter template .docx (optional -- for style matching)
+- SARA.md (if it exists from prior workflows)
 
 ### Output
 
-- Title objection letter .docx
-- Title summary memo .docx
+- Title objection letter .docx (template-driven if template provided)
+- Title summary memo .docx (separate file)
 - Updated SARA.md
 
 ### Steps
 
-[To be defined in Plan 03-02]
+#### Step 1: Read Title Commitment and Extract Key Information
+
+1. Read SARA.md if it exists (reuse deal context from prior workflows)
+2. Read title commitment using `read_docx`
+3. Extract:
+   - Title company and commitment number
+   - Proposed insured (buyer entity)
+   - Policy type (owner's or lender's) and proposed insured amount
+   - Vesting (how title will be held)
+   - Effective date of commitment
+   - Schedule A: property description, proposed coverage amount
+   - Schedule B-I: requirements to be satisfied before closing (list each requirement)
+   - Schedule B-II: exceptions to coverage (list each exception with its number)
+   - Any special endorsements offered or required
+4. If PSA available: extract title objection deadline, permitted exceptions definition, and any title-related provisions
+5. If survey available: note survey-related exceptions for cross-reference
+
+#### Step 2: Categorize Exceptions (Accept / Object / Review)
+
+For each Schedule B-II exception, assign one of three categories:
+
+**Accept** -- Exception is standard/boilerplate or acceptable for this transaction:
+- Standard printed exceptions (rights of parties in possession, survey matters, mechanic's liens, taxes not yet due)
+- Utility easements that do not materially affect the property
+- Restrictions/covenants that run with the land and are customary
+- Exceptions that match PSA-defined "permitted exceptions" (if PSA provided)
+
+**Object** -- Exception requires curative action before closing:
+- Open mortgages or deeds of trust
+- Judgment liens, tax liens, mechanic's liens (filed)
+- Encroachments or boundary disputes
+- Easements that materially affect intended use
+- Any exception that would not be acceptable to a reasonable buyer
+- For each objection: specify the EXACT cure action required (e.g., "Release this mortgage of record," "Obtain subordination agreement from [lienholder]," "Record satisfaction of judgment")
+
+**Review** -- Exception needs partner attention before categorization:
+- Exceptions Sara cannot fully analyze from available documents alone
+- Exceptions involving complex title issues (adverse possession claims, boundary line agreements, unrecorded interests)
+- Exceptions where the cure action depends on business decisions the partner must make
+- Include Sara's preliminary analysis and recommendation for each Review item
+
+**Quality check:** Every Schedule B-II exception must have a category. If Sara has categorized all exceptions as Accept, she has likely been too permissive -- go back and examine each non-standard exception critically. If she has categorized all as Object, she may be over-objecting -- standard exceptions should be accepted.
+
+**Cross-reference with PSA and survey when available:**
+- Compare exceptions to PSA's "permitted exceptions" definition
+- Compare survey exceptions to the survey itself (if provided)
+- Note any discrepancies between the title commitment and other documents
+
+#### Step 3: Milestone Check-in (Exception Categorization Review)
+
+Present the categorized exceptions to the partner:
+
+> "I've reviewed the title commitment ([title company], Commitment No. [number]). Schedule B-II has [N] exceptions: [X] accepted, [Y] objected, [Z] flagged for your review. Here's the breakdown -- any adjustments before I draft the letter?"
+
+Include a summary table:
+
+| # | Exception | Category | Cure Action / Notes |
+|---|-----------|----------|---------------------|
+
+Wait for confirmation or corrections. Apply any corrections to the categorization.
+
+#### Step 4: Generate Title Objection Letter and Summary Memo
+
+**Title Objection Letter (.docx):**
+- If template provided: use `write_docx` with `template_path` for style matching
+- Formal letter format (see work-product-standards.md for letter standards)
+- Addressed to seller (or seller's counsel per PSA)
+- Reference: PSA date, parties, property, title commitment number
+- State the objection deadline (from PSA if available, otherwise note as [OBJECTION DEADLINE])
+- For each objected exception:
+  - Identify the exception by Schedule B-II number and description
+  - State the specific cure action required
+  - State the deadline for cure (typically closing or an earlier date per PSA)
+- For accepted exceptions: brief statement that buyer accepts the remaining exceptions as permitted exceptions (do not list each one individually in the letter)
+- For Review exceptions: these do NOT appear in the letter (they are in the memo for partner review first)
+- Close with standard reservation of rights language (buyer reserves right to object to additional exceptions disclosed after the date of the letter)
+
+**Title Summary Memo (.docx):**
+- Client-facing memo format (see work-product-standards.md)
+- Header: To (partner/client), From (Sara), Date, Re (Title Review -- [Property])
+- Sections:
+  1. **Commitment Overview:** Title company, commitment number, insured amount, policy type, vesting, effective date
+  2. **Schedule B-I Requirements:** List each requirement and its status (satisfied/pending/to be satisfied at closing)
+  3. **Exception Analysis:** All Schedule B-II exceptions with Accept/Object/Review categorization
+     - For each exception: number, description, category, cure action (if Object), notes
+     - Standard/boilerplate exceptions discussed briefly (what they are, why they are standard)
+     - Objected exceptions with detailed analysis of the issue and cure required
+     - Review exceptions with Sara's preliminary analysis and recommendation
+  4. **Cross-Reference Notes:** Discrepancies between title commitment, PSA, and survey (if applicable)
+  5. **Recommendations:** Prioritized action items for the partner
+
+**File naming:** `objection-letter-[property-shortname].docx`, `title-memo-[property-shortname].docx`
+
+#### Step 5: Update SARA.md
+
+- Update Deal Summary with title commitment details (if not already present)
+- Append to Work Product Log: date, "Title Objection Letter + Summary Memo", output file names, exception counts (X accepted, Y objected, Z review)
+- Append to Issues Flagged: any title issues that could affect the deal
 
 ---
 

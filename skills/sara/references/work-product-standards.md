@@ -310,11 +310,59 @@ The .msg file should be a complete, ready-to-forward package: open in Outlook, r
 
 ## Title Objection Letter
 
-[Standards completed in Plan 03-02]
+### Structure
+
+1. **[FIRM LETTERHEAD]** placeholder
+2. **Date and addressee** -- seller or seller's counsel (per PSA notice provisions)
+3. **Re line** -- reference to PSA (date, parties), property description, title commitment number
+4. **Opening paragraph** -- state buyer's review of the title commitment pursuant to the PSA, identify the title company and commitment date, establish basis for objections under the PSA's title review provisions
+5. **Objection deadline reference** -- state the deadline from PSA (or `[OBJECTION DEADLINE]` placeholder if not available)
+6. **Numbered objections** -- each objection includes:
+   - Schedule B-II exception number
+   - Description of the exception
+   - Specific cure action required (e.g., "Release this deed of trust," "Record satisfaction of this judgment")
+   - Deadline for cure (typically closing date or earlier per PSA)
+7. **Acceptance statement** -- brief statement that buyer accepts the remaining Schedule B-II exceptions as permitted exceptions under the PSA (do not list each accepted exception individually)
+8. **Reservation of rights** -- standard language reserving buyer's right to object to:
+   - Additional exceptions disclosed after the date of the letter
+   - Matters revealed by survey or inspections not yet completed
+   - Any title defect discovered prior to closing
+9. **Signature block** -- partner name (Sara notes who should sign)
+
+### Standards
+
+- Every objection must specify the exact cure action -- "Release this deed of trust of record" not "Remove this encumbrance"
+- Reference each exception by Schedule B-II number for precision
+- Set cure deadline (typically closing date or earlier per PSA)
+- Formal letter tone -- this is correspondence with opposing counsel
+- Do not include Review items in the letter -- those need partner decision first
+- Do not include detailed analysis of accepted exceptions in the letter (analysis goes in the memo)
+- Match template style if template provided
+- Include PSA section references for the title review provision and permitted exceptions definition
 
 ## Title Summary Memo
 
-[Standards completed in Plan 03-02]
+### Structure
+
+1. **Header block** -- To (partner/client), From (Sara), Date, Re (Title Review -- [Property])
+2. **Commitment Overview** -- title company, commitment number, insured amount, policy type (owner's/lender's), vesting, effective date
+3. **Schedule B-I Requirements** -- list each requirement with status (satisfied/pending/to be satisfied at closing)
+4. **Exception Analysis** -- all Schedule B-II exceptions with categorization:
+   - For each exception: number, description, category (Accept/Object/Review), cure action (if Object), notes
+   - Presented as a table or structured list
+5. **Cross-Reference Notes** -- discrepancies between title commitment, PSA, and survey (if applicable)
+6. **Recommendations** -- prioritized action items for the partner
+
+### Standards
+
+- Write for a sophisticated businessperson or partner reviewing title
+- Every exception gets a row -- Accept, Object, and Review items all discussed
+- Standard exceptions discussed briefly (what they are, why they are standard) -- not skipped
+- Object items include detailed analysis matching the letter's objections
+- Review items include Sara's preliminary analysis and recommendation -- what Sara thinks the right call is and why partner input is needed
+- Cross-reference notes identify any inconsistency between title commitment and other deal documents
+- Recommendations are specific and actionable: "Obtain release of [Mortgage dated X recorded at Y]" not "Address title issues"
+- If PSA defines "permitted exceptions," note which Schedule B-II items fall within that definition and which do not
 
 ## Closing Documents
 
