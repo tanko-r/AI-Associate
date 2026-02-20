@@ -204,6 +204,12 @@ These apply to all contract types:
 
 Sara also applies the target risk categories from Step 3c, which are tailored to the specific document type and representation.
 
+### Sentence-Level Analysis -- Mandatory
+
+Every sentence in the document must be individually read and assessed. For each sentence, Sara (or the delegated subagent) determines whether a change is warranted for the client's benefit. Do not skip sentences because they "look standard" or appear to be boilerplate. Standard language frequently contains embedded risks (knowledge qualifiers, deemed-approval provisions, one-sided remedies) that only surface on close reading.
+
+For each sentence, the reviewer must make a deliberate **keep** or **change** decision. At Level 4-5, this decision is recorded in the disposition table. At Level 1-3, the analysis still happens -- it is simply not documented at the same granularity.
+
 ### Risk Relationships
 
 For each risk, identify how it connects to other provisions in the document:
@@ -333,7 +339,7 @@ After all batches are complete, Sara:
 2. **Resolves conforming changes** — every batch flags sections outside its scope that need updating; Sara ensures all conforming changes are captured
 3. **Resolves "FLAG FOR SARA" items** — make the judgment calls that were escalated
 4. **Compiles the revision set** — assemble all revised paragraphs (keyed by paragraph ID) into a single revision map
-5. **Generates the redline** — pass the original document and the compiled revision map to `redline_docx` to produce a tracked-changes .docx
+5. **Generates the redline** — pass the original document and the compiled revision map to `redline_docx` to produce a tracked-changes .docx. **File naming:** `[Original Filename] v02 (redline).docx`. Increment version numbers for subsequent rounds (v03, v04, etc.).
 
 ### Redlining Principles
 
@@ -345,6 +351,29 @@ After all batches are complete, Sara:
 
 **Save to:** `final/redline-[document-name].docx` — the marked-up document. Batch outputs saved to `junior-work/reviser/batch-[N]-revisions.md`.
 **Log:** Append every batch dispatch (full Task prompt with batch contents and context) and Sara's inter-batch review notes to `prompt-log.md`.
+
+## Step 6.5: Final Document QC
+
+After generating the redline and before preparing the transmittal package, Sara re-reads the generated redline document and verifies quality. This is a **hard gate** — Sara cannot proceed to Step 7 without completing this checklist.
+
+### QC Checklist
+
+- [ ] **No duplicate content** — search for repeated paragraphs or sentences that appear more than once. Pay special attention to sections where new language was inserted — anchor-based insertion tools can create duplicates when inserted text contains phrases matching the original anchor.
+- [ ] **Formatting consistency** — spot-check that inserted text matches the document's base font, size, and spacing. Read the document in HTML format first to confirm styling. Bare `<p>` tags or unstyled insertions indicate a formatting mismatch.
+- [ ] **Cross-reference integrity** — verify all section references still point to correct locations. Insertions and deletions can shift numbering.
+- [ ] **Defined term consistency** — verify new or modified defined terms are used consistently throughout the document. Check that no orphaned references to old defined terms remain.
+- [ ] **Track changes attribution** — confirm all changes show correct author attribution in the tracked changes metadata.
+- [ ] **No orphaned text** — check that no text was accidentally placed outside its intended section (e.g., content appearing after a signature block or between articles where it doesn't belong).
+
+### Remediation
+
+If any QC issue is found:
+1. Identify the root cause (tool behavior, batch boundary, cross-reference shift)
+2. Fix the issue in the redline document
+3. Re-run the specific QC check that failed
+4. Document the issue and fix in `prompt-log.md`
+
+**Save to:** Append QC results to `prompt-log.md` with pass/fail for each checklist item.
 
 ## Step 7: Prepare the Transmittal Package
 
@@ -447,6 +476,8 @@ Before presenting the transmittal package to the partner:
 - [ ] Redline is internally consistent -- conforming changes made where needed
 - [ ] Defined terms are used correctly in proposed language
 - [ ] Cross-references in proposed language are accurate
+- [ ] Final document QC pass completed (Step 6.5) -- no duplicates, formatting consistent, cross-refs valid
+- [ ] Generated redline re-read in full before transmittal package preparation
 
 **Transmittal Package:**
 - [ ] Transmittal memo has all required sections (Deal Summary, Review Scope, Key Changes, Open Items)

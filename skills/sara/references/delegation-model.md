@@ -44,6 +44,9 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 ### Reference File Coverage
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
 
+### Sentence-Level Analysis (Mandatory)
+You must read and assess every sentence in this batch individually. For each sentence, determine whether a change is warranted for the client's benefit. Do not skip sentences because they appear standard or boilerplate -- standard language frequently contains embedded risks that only surface on close reading. Every sentence gets a deliberate keep-or-change decision.
+
 ### Output Requirements
 - Save to: [path]
 - Format: per contract-reviser output spec (REVISED/NO CHANGE/FLAG FOR SARA with full replacement paragraphs)
@@ -77,6 +80,9 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 
 ### Reference File Coverage
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
+
+### Sentence-Level Analysis (Mandatory)
+You must read and assess every sentence in this batch individually. For each sentence, determine whether a change is warranted for the client's benefit. Do not skip sentences because they appear standard or boilerplate -- standard language frequently contains embedded risks that only surface on close reading. Every sentence gets a deliberate keep-or-change decision.
 
 ### Output Requirements
 - Save to: [path]
