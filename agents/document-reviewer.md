@@ -59,10 +59,11 @@ Sara may dispatch you in batches. For each batch, save to the path Sara specifie
 5. **After all paragraphs: identify thematic groupings and compound risks** -- group related findings into themes for Section B
 6. **Check cross-references** -- for every Revise, Delete, or Insert disposition, identify conforming changes needed in other provisions
 7. **Verify coverage** -- confirm every paragraph in the batch has a disposition row in Section A. If a paragraph was missed, go back and add it.
+8. **After completing Sections A-C, produce Section D: Missing Provisions Analysis** -- identify provisions a buyer would expect in a market agreement that are entirely absent from this draft. For each missing provision, propose specific new language, identify where it should be inserted, and explain why it matters for the client.
 
 ## Required Output Format
 
-Your review must contain three sections:
+Your review must contain four sections:
 
 ### Section A: Paragraph Disposition Table
 
@@ -99,6 +100,7 @@ For EVERY paragraph in the document or batch (not just flagged items):
   - "Non-standard -- [explanation of unusual structure or approach]"
   - For boilerplate paragraphs (preamble, recitals, signature blocks): "Market" or "--" is acceptable
   - **Source marker [MVP]:** When a market assessment is based on general legal knowledge rather than the PSA checklist or market standards reference file, append `†` to the value. Example: `Below market†` means "market assessment based on general legal knowledge -- no firm-specific reference data for this item." Sara provides reference file status in the delegation briefing; apply `†` to any assessment where the corresponding checklist item has a `[TODO]` placeholder or the market standards file has no entry.
+- **Schedule blanks**: For every `[See Schedule]` or similar placeholder blank in the document, assign a disposition of **Insert** or **Comment**. Propose a default value or range based on market practice (e.g., '[See Schedule] for DD period -- market: 45-60 days with 15-day extension right'). These must also appear in the transmittal memo's Open Items section.
 - **Risk Severity**: One of:
   - **High** -- material financial, legal, or operational exposure
   - **Medium** -- meaningful but manageable risk; should be addressed but not a deal-breaker
@@ -135,6 +137,30 @@ For every Revise, Delete, or Insert disposition, identify other provisions that 
 If no conforming changes are needed, state: "No conforming changes identified -- all revisions are self-contained."
 
 If a revision affects provisions outside this batch, flag them explicitly: "p_15 revision may require conforming changes in p_120 (Section 14.2) -- not in this batch. Flag for Sara to cross-check."
+
+### Section D: Missing Provisions Analysis
+
+After reviewing all provisions present in the document, identify buyer-protective provisions that are entirely absent from the draft. A thorough review flags not just what is wrong with existing language, but what is missing entirely.
+
+For each missing provision:
+
+| Missing Provision | Recommended Location | Proposed Language | Market Rationale | Priority |
+|-------------------|---------------------|-------------------|------------------|----------|
+| No pending special assessments rep | After seller reps (Article [X]) | "Seller represents that there are no pending or contemplated special assessments affecting the Property." | Standard buyer rep in institutional PSAs | High |
+
+**Minimum categories to evaluate for absence** (propose specific language for each that is missing):
+- No pending special assessments representation
+- No pending condemnation notices representation
+- No material adverse change since Effective Date representation
+- No deferred maintenance exceeding $[amount] representation
+- Insurance claims history (last [N] years) representation
+- No brokerage commissions due on renewal options representation
+- Compliance with ADA, fire code, building code representation
+- OFAC/sanctions clean representation (if not already present)
+- No tenant rights of first refusal or purchase options (absolute, not knowledge-qualified)
+- Operating statements complete and accurate representation
+
+This list is a minimum floor, not an exhaustive list. Add any other provisions that a sophisticated buyer's counsel would expect to see in a market agreement of this type.
 
 ## Quality Standards
 
