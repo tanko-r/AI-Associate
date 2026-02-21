@@ -135,6 +135,8 @@ Sara proceeds unless the partner redirects. This is a status update with an invi
 **Save to:** `analysis/analysis-framework.md` — the full target concept and risk lists.
 **Log:** Append the framework summary to `prompt-log.md`.
 
+> **HARD GATE — Step 3 Complete:** `analysis/analysis-framework.md` must exist with at least N target concept categories and M target risk categories before proceeding to Step 4. If the file does not exist or is empty, Sara stops and rebuilds it.
+
 ## Step 4: Build the Concept Map
 
 Extract the document's key commercial and structural terms into categories. The concept map captures **what the deal says** — the risk map (Step 5) captures **what could go wrong**.
@@ -230,6 +232,16 @@ Severity depends on both the provision and the client's position:
 
 Aggressiveness setting shifts the thresholds: at level 1 (conservative), only clear problems are flagged as high; at level 5 (aggressive), anything not maximally favorable is flagged.
 
+### Schedules Review
+
+During risk map generation, Sara (or the delegated document-reviewer) must identify every `[See Schedule]`, `[To Be Determined]`, `[TBD]`, or similar placeholder blank in the document. For each:
+
+1. **Flag in the disposition table** -- assign a disposition of Insert or Comment
+2. **Propose a default value or range** based on market practice for this transaction type and size (e.g., "DD period: 45-60 days with 15-day extension right for institutional CRE")
+3. **Include in Open Items** -- every schedule blank must appear in the transmittal memo's Open Items section (Step 7) with the proposed default and market context
+
+Schedule blanks are not merely administrative gaps -- they represent unresolved commercial terms. Flagging them ensures the partner can make informed decisions about proposed values before the redline is prepared.
+
 **Save to:** `analysis/risk-map.md` — the full risk inventory with relationships and severity.
 **Log:** When delegating risk analysis to `document-reviewer`, append the full Task prompt to `prompt-log.md`. Instruct the subagent to save output to `junior-work/reviewer/`.
 
@@ -250,6 +262,7 @@ Sara delegates the disposition table to the document-reviewer in batches (same b
 - Representation and aggressiveness level
 - Defined terms
 - Prior batch results (for consistency)
+- Schedule blank inventory (for flagging [See Schedule] placeholders with proposed defaults)
 
 ### Output Format
 
@@ -280,6 +293,8 @@ After completing the disposition table, Sara pauses and presents:
 
 **Save to:** `analysis/disposition-table.md`
 **Log:** Append compilation summary to `prompt-log.md`
+
+> **HARD GATE — Step 5.5 Complete:** `analysis/disposition-table.md` must exist and cover every paragraph batch before proceeding to Step 6. Sara must verify the coverage floor is met or obtain partner approval for a documented exception before dispatching contract-reviser batches.
 
 ## Step 6: Prepare the Redline
 
@@ -338,8 +353,10 @@ After all batches are complete, Sara:
 1. **Reviews all batch outputs together** — look for inconsistencies across batches (e.g., Batch 2 changed a defined term that Batch 4 also used)
 2. **Resolves conforming changes** — every batch flags sections outside its scope that need updating; Sara ensures all conforming changes are captured
 3. **Resolves "FLAG FOR SARA" items** — make the judgment calls that were escalated
-4. **Compiles the revision set** — assemble all revised paragraphs (keyed by paragraph ID) into a single revision map
-5. **Generates the redline** — pass the original document and the compiled revision map to `redline_docx` to produce a tracked-changes .docx. **File naming:** `[Original Filename] v02 (redline).docx`. Increment version numbers for subsequent rounds (v03, v04, etc.).
+4. **Compiles the revision set** — assemble all revised paragraphs (keyed by paragraph ID) into a single revision map JSON file saved to `junior-work/reviser/merged-revisions.json`
+5. **Generates the clean revised document** — use a Python rebuild script (`temp/rebuild_docx.py`) with `python-docx` to produce a clean revised `.docx` from the original file and the revision map. **File naming:** `[Original Filename] v02 (clean).docx`. Increment version numbers for subsequent rounds. The partner will run Word Compare to generate the tracked-changes view. **Do NOT use `redline_docx`** — the partner compares documents themselves.
+
+> **Note on new provisions:** When the revision map includes new provisions that do not correspond to existing paragraph IDs (e.g., new representations, new closing conditions), the rebuild script inserts them at the correct location in the document structure. New provisions added to existing sections are inserted immediately after the last paragraph of that section. New sections are appended in the correct article order.
 
 ### Redlining Principles
 
@@ -349,8 +366,10 @@ After all batches are complete, Sara:
 - Provide alternatives: when deleting unfavorable language, propose replacement language, not just deletions
 - Be realistic: propose language the other side might accept, not a wish list they'll reject entirely
 
-**Save to:** `final/redline-[document-name].docx` — the marked-up document. Batch outputs saved to `junior-work/reviser/batch-[N]-revisions.md`.
+**Save to:** `final/[Original Filename] v02 (clean).docx` — the clean revised document (no tracked changes). Batch outputs saved to `junior-work/reviser/batch-[N]-revisions.md`. Merged revision map saved to `junior-work/reviser/merged-revisions.json`.
 **Log:** Append every batch dispatch (full Task prompt with batch contents and context) and Sara's inter-batch review notes to `prompt-log.md`.
+
+> **HARD GATE — Step 6 Complete:** All three of these must exist before proceeding to Step 6.5: (1) all `batch-[N]-revisions.md` files, (2) `merged-revisions.json`, and (3) the clean revised `.docx`. Sara verifies each file exists before marking Step 6 complete.
 
 ## Step 6.5: Final Document QC
 
@@ -374,6 +393,8 @@ If any QC issue is found:
 4. Document the issue and fix in `prompt-log.md`
 
 **Save to:** Append QC results to `prompt-log.md` with pass/fail for each checklist item.
+
+> **HARD GATE — Step 6.5 Complete:** Every QC checklist item must show PASS before proceeding to Step 7. If any item fails, Sara remediates and re-checks. Sara does not proceed to the transmittal package with a known QC failure.
 
 ## Step 7: Prepare the Transmittal Package
 
@@ -473,11 +494,12 @@ Before presenting the transmittal package to the partner:
 - [ ] Coverage floor met or partner-approved exception
 
 **Redline Quality:**
-- [ ] Redline is internally consistent -- conforming changes made where needed
+- [ ] Revised document is internally consistent -- conforming changes made where needed
 - [ ] Defined terms are used correctly in proposed language
 - [ ] Cross-references in proposed language are accurate
 - [ ] Final document QC pass completed (Step 6.5) -- no duplicates, formatting consistent, cross-refs valid
-- [ ] Generated redline re-read in full before transmittal package preparation
+- [ ] Merged revision map saved to `junior-work/reviser/merged-revisions.json` before document rebuild
+- [ ] Clean revised `.docx` generated (no tracked changes) -- partner will run Word Compare
 
 **Transmittal Package:**
 - [ ] Transmittal memo has all required sections (Deal Summary, Review Scope, Key Changes, Open Items)

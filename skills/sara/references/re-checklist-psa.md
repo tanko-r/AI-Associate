@@ -284,6 +284,8 @@
 - [ ] **Check security for rep breaches** -- Is the seller required to post security (escrow, letter of credit, parent guarantee) in case representations are false? What is the amount (1-10% of purchase price)?
   - [TODO: Add firm's standard security amounts by deal type and risk profile]
 
+- [ ] **Evaluate knowledge qualifications for elimination** -- For each knowledge-qualified representation, determine whether the subject matter is within Seller's operational knowledge (rent rolls, lease terms, financials, environmental condition, property condition, tenant defaults, contract status, compliance history). If so, the buyer-side position is an **absolute representation with a disclosure schedule** as the safety valve -- not a knowledge-qualified rep. Knowledge qualifications are appropriate only for matters genuinely outside the knowledge person's scope (undisclosed third-party claims, future regulatory actions). Flag every knowledge-qualified operational rep for potential conversion. At Level 4-5, conversion is mandatory; at Level 3, flag as recommendation.
+
 ### Key Risks
 
 | Risk | Buyer Perspective | Seller Perspective |
@@ -295,6 +297,7 @@
 | Low cap on rep breach liability (less than 1% of purchase price) | High -- insufficient recovery for material breaches | Favorable -- limits total exposure |
 | No-representations clause undermines express reps | High -- buyer's reliance on express reps may be challenged | Favorable -- reinforces as-is nature of transaction |
 | Double materiality (MAE in rep + material bring-down) | Medium -- significantly narrows scope of effective reps | Favorable -- raises threshold for claims |
+| Knowledge qualifier on operational matters (rent roll, financials, property condition) with no disclosure schedule alternative | High -- seller shelters behind "to Seller's knowledge" for matters it controls and should know absolutely; disclosure schedule would provide same protection without the knowledge shield | Favorable -- knowledge qualifier limits exposure to actual awareness of named knowledge parties |
 | [TODO: Add additional risks from firm experience] | | |
 
 ---
