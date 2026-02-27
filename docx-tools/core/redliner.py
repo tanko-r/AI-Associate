@@ -5,7 +5,9 @@ Applies revisions to a document using Word's revision markup (w:ins, w:del)
 so changes display correctly in Microsoft Word's track changes view.
 """
 
+import re
 import shutil
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 from typing import Dict
@@ -16,6 +18,8 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.table import Table
 from docx.text.paragraph import Paragraph
+
+from core.inserter import find_paragraph_element
 
 
 def redline_docx(
@@ -44,29 +48,62 @@ def redline_docx(
     shutil.copy2(original_path, output_path)
     doc = Document(str(output_path))
 
-    para_id = 0
-    for block in _iter_block_items(doc):
-        if isinstance(block, Paragraph):
-            para_id += 1
-            para_key = f"p_{para_id}"
-            if para_key in revisions:
-                rev = revisions[para_key]
-                original_text = rev.get("original", "")
-                revised_text = rev.get("revised", "")
-                if original_text != revised_text:
-                    _apply_track_changes(block, original_text, revised_text, author)
-        elif isinstance(block, Table):
-            for row in block.rows:
-                for cell in row.cells:
-                    for para in cell.paragraphs:
-                        para_id += 1
-                        para_key = f"p_{para_id}"
-                        if para_key in revisions:
-                            rev = revisions[para_key]
-                            original_text = rev.get("original", "")
-                            revised_text = rev.get("revised", "")
-                            if original_text != revised_text:
-                                _apply_track_changes(para, original_text, revised_text, author)
+    # ------------------------------------------------------------------
+    # Bucket revisions by action type
+    # ------------------------------------------------------------------
+    replacements: Dict[str, dict] = {}
+    deletions: Dict[str, dict] = {}
+    insertions: Dict[str, dict] = {}
+
+    for para_key, rev in revisions.items():
+        action = rev.get("action", "replace")
+        if action == "replace":
+            replacements[para_key] = rev
+        elif action == "delete":
+            deletions[para_key] = rev
+        elif action == "insert_after":
+            insertions[para_key] = rev
+
+    # ------------------------------------------------------------------
+    # 1) Replacements — existing behaviour, iterate body blocks in order
+    # ------------------------------------------------------------------
+    if replacements:
+        para_id = 0
+        for block in _iter_block_items(doc):
+            if isinstance(block, Paragraph):
+                para_id += 1
+                para_key = f"p_{para_id}"
+                if para_key in replacements:
+                    rev = replacements[para_key]
+                    original_text = rev.get("original", "")
+                    revised_text = rev.get("revised", "")
+                    if original_text != revised_text:
+                        _apply_track_changes(block, original_text, revised_text, author)
+            elif isinstance(block, Table):
+                for row in block.rows:
+                    for cell in row.cells:
+                        for para in cell.paragraphs:
+                            para_id += 1
+                            para_key = f"p_{para_id}"
+                            if para_key in replacements:
+                                rev = replacements[para_key]
+                                original_text = rev.get("original", "")
+                                revised_text = rev.get("revised", "")
+                                if original_text != revised_text:
+                                    _apply_track_changes(para, original_text, revised_text, author)
+
+    # ------------------------------------------------------------------
+    # 2) Deletions — mark existing paragraph runs as tracked deletions
+    # ------------------------------------------------------------------
+    for para_key in deletions:
+        _apply_tracked_deletion(doc, para_key, author)
+
+    # ------------------------------------------------------------------
+    # 3) Insertions — process in reverse para order to maintain positions
+    # ------------------------------------------------------------------
+    for para_key in sorted(insertions, key=_para_sort_key, reverse=True):
+        rev = insertions[para_key]
+        _apply_tracked_insertion(doc, para_key, rev["text"], author)
 
     doc.save(str(output_path))
     return str(output_path)
@@ -162,3 +199,98 @@ def _make_run(text: str, format_dict: dict = None, is_delete: bool = False):
     t.text = text
     run.append(t)
     return run
+
+
+# ------------------------------------------------------------------
+# Helpers for insert_after / delete actions
+# ------------------------------------------------------------------
+
+def _para_sort_key(para_key: str) -> int:
+    """Extract the numeric part of a paragraph ID for sorting (e.g., 'p_12' -> 12)."""
+    m = re.search(r"\d+", para_key)
+    return int(m.group()) if m else 0
+
+
+def _apply_tracked_deletion(doc: Document, para_key: str, author: str):
+    """
+    Mark every run in the paragraph as a tracked deletion.
+
+    Each existing <w:r> is wrapped in a <w:del> element and its <w:t>
+    children are converted to <w:delText>, so Word shows the paragraph
+    with strikethrough in Track Changes view.  The paragraph itself is
+    preserved (not removed) to keep numbering stable.
+    """
+    p = find_paragraph_element(doc, para_key)
+    if p is None:
+        return
+
+    rev_date = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Collect existing runs (snapshot the list to avoid mutation issues)
+    runs = list(p.findall(qn("w:r")))
+    for run in runs:
+        # Convert every <w:t> inside the run to <w:delText>
+        for t in run.findall(qn("w:t")):
+            del_text = OxmlElement("w:delText")
+            del_text.set(qn("xml:space"), "preserve")
+            del_text.text = t.text or ""
+            run.replace(t, del_text)
+
+        # Wrap the run in a <w:del> element
+        del_elem = OxmlElement("w:del")
+        del_elem.set(qn("w:id"), str(abs(hash(para_key)) % 100000))
+        del_elem.set(qn("w:author"), author)
+        del_elem.set(qn("w:date"), rev_date)
+
+        # Replace run in its parent with the del wrapper containing the run
+        run.addnext(del_elem)
+        p.remove(run)
+        del_elem.append(run)
+
+
+def _apply_tracked_insertion(doc: Document, para_key: str, text: str, author: str):
+    """
+    Insert a new paragraph after *para_key* with tracked-insertion markup.
+
+    The new paragraph copies <w:pPr> and the first run's <w:rPr> from the
+    target so it inherits formatting.  The run is wrapped in <w:ins> so
+    Word displays it as a tracked insertion.
+    """
+    target = find_paragraph_element(doc, para_key)
+    if target is None:
+        return
+
+    rev_date = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Build the new <w:p>
+    new_p = OxmlElement("w:p")
+
+    # Copy paragraph properties from target
+    source_pPr = target.find(qn("w:pPr"))
+    if source_pPr is not None:
+        new_p.append(deepcopy(source_pPr))
+
+    # Build a run with copied formatting
+    new_r = OxmlElement("w:r")
+    first_run = target.find(qn("w:r"))
+    if first_run is not None:
+        source_rPr = first_run.find(qn("w:rPr"))
+        if source_rPr is not None:
+            new_r.append(deepcopy(source_rPr))
+
+    t = OxmlElement("w:t")
+    t.set(qn("xml:space"), "preserve")
+    t.text = text
+    new_r.append(t)
+
+    # Wrap the run in <w:ins>
+    ins_elem = OxmlElement("w:ins")
+    ins_elem.set(qn("w:id"), str(abs(hash(text)) % 100000))
+    ins_elem.set(qn("w:author"), author)
+    ins_elem.set(qn("w:date"), rev_date)
+    ins_elem.append(new_r)
+
+    new_p.append(ins_elem)
+
+    # Position after the target paragraph
+    target.addnext(new_p)
