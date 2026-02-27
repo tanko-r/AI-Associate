@@ -90,7 +90,6 @@ def test_remove_paragraph_invalid_id(three_para_docx):
 
 def test_find_paragraph_in_table(tmp_path):
     from core.inserter import find_paragraph_element
-    from docx.oxml.ns import qn
     doc = Document()
     doc.add_paragraph("Before table.")       # p_1
     table = doc.add_table(rows=1, cols=1)
@@ -108,7 +107,6 @@ def test_find_paragraph_in_table(tmp_path):
 
 def test_insert_paragraph_copies_bold_formatting(tmp_path):
     from core.inserter import insert_paragraph_after
-    from docx.oxml.ns import qn
     doc = Document()
     doc.add_paragraph("Normal text.")           # p_1
     bold_p = doc.add_paragraph()                 # p_2

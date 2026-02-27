@@ -35,7 +35,7 @@ def _iter_paragraphs_with_id(doc: Document):
                         yield f"p_{para_id}", p
 
 
-def find_paragraph_element(doc: Document, para_id: str) -> Optional[object]:
+def find_paragraph_element(doc: Document, para_id: str) -> Optional[OxmlElement]:
     """
     Find a paragraph's raw lxml <w:p> element by its sequential ID.
 
@@ -57,7 +57,7 @@ def insert_paragraph_after(
     target_para_id: str,
     text: str,
     style_source_id: Optional[str] = None,
-) -> Optional[object]:
+) -> Optional[OxmlElement]:
     """
     Insert a new paragraph immediately after the target paragraph.
 
@@ -133,5 +133,10 @@ def remove_paragraph(doc: Document, para_id: str) -> bool:
         return False
 
     parent = elem.getparent()
+    # Refuse to remove the last paragraph in a table cell
+    if parent.tag == qn("w:tc"):
+        sibling_paras = parent.findall(qn("w:p"))
+        if len(sibling_paras) <= 1:
+            return False
     parent.remove(elem)
     return True
