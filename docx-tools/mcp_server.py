@@ -20,6 +20,7 @@ from core.redliner import redline_docx as _redline_docx
 from core.comparer import compare_docx as _compare_docx, format_for_display as _comparer_display
 from core.extractor import extract_structure as _extract_structure, format_for_display as _extractor_display
 from core.analyzer import analyze_contract as _analyze_contract, format_for_display as _analyzer_display
+from core.scanner import scan_document as _scan_document, format_for_display as _scanner_display
 
 mcp = FastMCP("docx-tools")
 
@@ -68,6 +69,13 @@ def analyze_contract(docx_path: str, representation: str, focus_areas: str = "")
     areas = [a.strip() for a in focus_areas.split(",") if a.strip()] if focus_areas else None
     result = _analyze_contract(docx_path, representation, focus_areas=areas)
     return _analyzer_display(result)
+
+
+@mcp.tool()
+def scan_document(docx_path: str) -> str:
+    """Scan a .docx for unfilled placeholders and missing exhibit/schedule references. Use during QC review."""
+    result = _scan_document(docx_path)
+    return _scanner_display(result)
 
 
 if __name__ == "__main__":
