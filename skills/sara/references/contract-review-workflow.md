@@ -62,10 +62,12 @@ Before beginning research, Sara loads the practice-area-specific reference files
 1. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/re-checklist-psa.md` -- PSA review checklist
 2. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/clause-library.md` -- model language reference
 3. Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/market-standards.md` -- market data reference
-4. Load negotiation playbook for the client's representation:
+4. Load negotiation playbook INDEX for the client's representation:
    - Determine buyer or seller side from the representation established in Step 1
-   - Read the directory listing of `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/playbook/{buyer-side|seller-side}/`
-   - **Selective loading:** Load only playbook topics that match the document's structure from Step 2 initial read (same pattern as checklist category loading). For a standard PSA, this will typically be 12-15 of 15 topics. Skip topics that clearly do not apply to this document.
+   - Read `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/playbook/{buyer-side|seller-side}/INDEX.md` — compact summary of all 15 topics with subtopic names, risk severities, and one-line summaries
+   - Use the index to determine which topics are relevant to this document (same selective filtering as checklist categories — match topics to the document's structure from Step 2 initial read). For a standard PSA, typically 12-15 of 15 topics are relevant.
+   - Record which topic numbers are relevant — these will be loaded in full during delegation (Step 6b)
+   - Do NOT load full playbook topic files at this stage
    - The 15 playbook topics map to the 24 checklist categories as follows: topics 01-07 → categories 1-8, topic 08 → category 17, topic 09 → categories 9-10, topic 10 → category 11, topic 11 → category 12, topic 12 → category 13, topic 13 → category 15, topic 14 → category 16, topic 15 → categories 18-20, 24
 
 **Best-effort loading:** If a file is not found, note the absence and proceed with LLM knowledge. Do not halt the review.
@@ -73,7 +75,7 @@ Before beginning research, Sara loads the practice-area-specific reference files
 **Selective loading:** Read the checklist's category list first. Then load only the categories that match the document's structure from the Step 2 initial read. For a standard PSA, this will typically be 18-22 of 24 categories. Skip categories that clearly do not apply (e.g., skip "Mortgage Assignment" if the PSA has no mortgage assumption provision).
 
 **Coverage report [MVP]:** After loading, count populated vs `[TODO]` placeholder categories in each file. Include in the Step 3d framework presentation:
-> "Reference files loaded. PSA checklist: [N]/24 categories have firm-specific content, [M] categories using general legal knowledge. Clause library: [X]/24 populated. Market standards: [Y]/24 populated. Playbook: [P]/15 topics loaded ({buyer|seller} side)."
+> "Reference files loaded. PSA checklist: [N]/24 categories have firm-specific content, [M] categories using general legal knowledge. Clause library: [X]/24 populated. Market standards: [Y]/24 populated. Playbook: INDEX loaded ({buyer|seller} side), [P]/15 topics relevant to this document."
 
 ### 3a: Identify What to Research
 
@@ -109,7 +111,7 @@ Format:
 Target Concept: [Category Name]
 What to extract: [Specific elements to find in the document]
 Why it matters: [Why this is important for this representation in this document type]
-Preferred position: [From playbook -- the client's ideal outcome for this concept, with sample language if available]
+Preferred position: [From playbook INDEX -- brief headline of the client's ideal outcome for this concept. Full sample language loaded at batch dispatch.]
 ```
 
 **Target Risk Categories** — the specific risk patterns Sara will watch for during the detailed review. These always include the universal risk categories (see Step 5) plus document-specific risk patterns. Merge playbook risk assessments, counterparty pushback scenarios, and fallback positions into each risk pattern — the playbook provides the negotiation strategy dimension (what to push for, what to concede, and in what order).
@@ -120,8 +122,8 @@ Target Risk: [Risk Pattern]
 What to look for: [Specific language or structural patterns that indicate this risk]
 Why it matters: [What could go wrong for the client]
 Typical market position: [What this provision normally looks like in a balanced deal]
-Playbook fallbacks: [From playbook -- ordered fallback positions if the preferred position is rejected]
-Counterparty pushback: [From playbook -- what the other side will argue and how to respond]
+Playbook fallbacks: [Loaded at batch dispatch from full playbook — not populated at framework time]
+Counterparty pushback: [Loaded at batch dispatch from full playbook — not populated at framework time]
 ```
 
 ### 3d: Present the Framework -- Milestone Check-In
@@ -345,6 +347,7 @@ For each batch, Sara dispatches the `contract-reviser` subagent with:
 5. **Client representation and aggressiveness** — from Step 1 intake
 6. **Document map** — a condensed outline of the full document (article/section headings with paragraph IDs) for cross-reference verification
 7. **Defined terms** — the document's defined terms list for correct usage in proposed language
+8. **Playbook context** — the full content from the playbook topic file(s) matching this batch's subject matter (loaded from `playbook/{side}/` based on the topic-to-category mapping established in Step 3-pre)
 
 **Dispatch sequentially, not in parallel** — each batch may surface conforming changes that affect later batches.
 

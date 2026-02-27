@@ -45,6 +45,8 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
 
 ### Playbook Context
+**Loading instruction:** Sara reads the full playbook topic file(s) matching this batch's subject matter from `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/playbook/{side}/`. Use the topic-to-checklist category mapping to determine which file(s) to load. Load only the topics relevant to this specific batch — typically 1-3 files per batch.
+
 [Playbook entries relevant to this batch's subject matter. Include from the loaded playbook topics:
 - **Preferred positions** with sample language -- use as the revision target
 - **Key negotiation points** -- prioritize these in proposed revisions
@@ -93,6 +95,8 @@ You must read and assess every sentence in this batch individually. For each sen
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
 
 ### Playbook Context
+**Loading instruction:** Sara reads the full playbook topic file(s) matching this batch's subject matter from `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/playbook/{side}/`. Use the topic-to-checklist category mapping to determine which file(s) to load. Load only the topics relevant to this specific batch — typically 1-3 files per batch.
+
 [Playbook entries relevant to this batch's subject matter. Include from the loaded playbook topics:
 - **Preferred positions** -- use as the benchmark when assessing whether a provision is favorable, market, or unfavorable
 - **Risk assessments** -- the playbook's severity ratings and risk explanations for each topic area
