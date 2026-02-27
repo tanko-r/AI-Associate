@@ -86,3 +86,42 @@ def test_remove_paragraph_invalid_id(three_para_docx):
     doc = Document(str(three_para_docx))
     result = remove_paragraph(doc, "p_99")
     assert result is False
+
+
+def test_find_paragraph_in_table(tmp_path):
+    from core.inserter import find_paragraph_element
+    from docx.oxml.ns import qn
+    doc = Document()
+    doc.add_paragraph("Before table.")       # p_1
+    table = doc.add_table(rows=1, cols=1)
+    table.rows[0].cells[0].paragraphs[0].text = "In table."  # p_2
+    doc.add_paragraph("After table.")        # p_3
+    path = tmp_path / "with_table.docx"
+    doc.save(str(path))
+
+    doc2 = Document(str(path))
+    elem = find_paragraph_element(doc2, "p_2")
+    assert elem is not None
+    texts = [t.text for t in elem.findall(f".//{qn('w:t')}")]
+    assert "In table." in "".join(texts)
+
+
+def test_insert_paragraph_copies_bold_formatting(tmp_path):
+    from core.inserter import insert_paragraph_after
+    from docx.oxml.ns import qn
+    doc = Document()
+    doc.add_paragraph("Normal text.")           # p_1
+    bold_p = doc.add_paragraph()                 # p_2
+    run = bold_p.add_run("Bold text.")
+    run.bold = True
+    doc.add_paragraph("Third.")                  # p_3
+    path = tmp_path / "bold.docx"
+    doc.save(str(path))
+
+    doc2 = Document(str(path))
+    new_elem = insert_paragraph_after(doc2, "p_1", "Inserted.", style_source_id="p_2")
+    # Verify rPr was copied with bold
+    rPr = new_elem.find(f".//{qn('w:rPr')}")
+    assert rPr is not None
+    bold_elem = rPr.find(qn("w:b"))
+    assert bold_elem is not None
