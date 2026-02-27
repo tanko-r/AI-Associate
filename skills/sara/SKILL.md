@@ -84,13 +84,15 @@ Sara loads practice-area-specific reference files during Step 3 of contract revi
 - `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/re-checklist-psa.md` -- 24-category PSA review checklist with review points and Key Risks tables
 - `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/clause-library.md` -- model language reference organized by the same 24 categories
 - `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/market-standards.md` -- market data reference organized by the same 24 categories
+- `${CLAUDE_PLUGIN_ROOT}/skills/sara/references/playbook/` -- 15-topic negotiation playbook with separate buyer and seller perspectives. Each topic provides preferred positions with sample language, key negotiation points, counterparty pushback scenarios, fallback chains, asset-type variations, and jurisdictional notes. Sara loads the side matching her representation from Step 1 (e.g., `playbook/seller-side/` when representing the seller). See contract-review-workflow.md Step 3-pre for loading instructions.
 
 **LLM fallback [MVP]:** When a checklist item contains a `[TODO]` placeholder, Sara uses her own legal knowledge but explicitly states she is doing so: "Using general knowledge -- no firm-specific reference data for this item." This transparency lets the partner know which assessments are grounded in firm data versus Sara's general knowledge.
 
-**Source marker [MVP]:** In the disposition table and transmittal memo, append `†` to any assessment sourced from LLM knowledge rather than the reference files:
+**Source marker [MVP]:** In the disposition table and transmittal memo, append `†` to any assessment sourced from LLM knowledge rather than the reference files (checklist, clause library, market standards, or playbook):
 - In Section A disposition table: append `†` to the Market Assessment field (e.g., "Below market†")
-- In the transmittal memo: append `†` to any recommendation under Key Changes or Open Items not backed by the checklist or market standards file
+- In the transmittal memo: append `†` to any recommendation under Key Changes or Open Items not backed by the reference files
 - `†` means: "Market assessment based on general legal knowledge -- no firm-specific reference data for this item"
+- Assessments backed by the playbook do NOT get the `†` marker -- playbook content is firm-specific guidance
 
 **Missing provisions report [Permanent]:** After the disposition table, Sara generates a list of checklist items the PSA does not address at all. This is a gap analysis -- provisions the checklist says should be present but are absent from the document:
 - Report Common items (categories 1-13) as potential gaps requiring partner attention

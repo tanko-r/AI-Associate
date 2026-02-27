@@ -44,6 +44,17 @@ Every delegation Sara dispatches MUST use the briefing template below. No ad-hoc
 ### Reference File Coverage
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
 
+### Playbook Context
+[Playbook entries relevant to this batch's subject matter. Include from the loaded playbook topics:
+- **Preferred positions** with sample language -- use as the revision target
+- **Key negotiation points** -- prioritize these in proposed revisions
+- **Counterparty pushback** -- anticipate objections and draft language that addresses likely resistance
+- **Fallback chain** -- if the preferred position is too aggressive for the aggressiveness level, use the ordered fallbacks to calibrate
+- **Asset-type variations** -- apply if the deal's asset type has specific guidance
+- **Jurisdictional notes** -- apply if relevant to the deal's jurisdiction
+
+Playbook content is firm-specific guidance. Revisions backed by the playbook do NOT receive the † source marker.]
+
 ### Sentence-Level Analysis (Mandatory)
 You must read and assess every sentence in this batch individually. For each sentence, determine whether a change is warranted for the client's benefit. Do not skip sentences because they appear standard or boilerplate -- standard language frequently contains embedded risks that only surface on close reading. Every sentence gets a deliberate keep-or-change decision.
 
@@ -80,6 +91,16 @@ You must read and assess every sentence in this batch individually. For each sen
 
 ### Reference File Coverage
 [Coverage status from Step 3-pre: which checklist categories have firm-specific content vs [TODO] placeholders, clause library and market standards population status -- enables correct application of † source markers]
+
+### Playbook Context
+[Playbook entries relevant to this batch's subject matter. Include from the loaded playbook topics:
+- **Preferred positions** -- use as the benchmark when assessing whether a provision is favorable, market, or unfavorable
+- **Risk assessments** -- the playbook's severity ratings and risk explanations for each topic area
+- **Counterparty pushback scenarios** -- flag provisions where the current language reflects the counterparty's preferred position
+- **Fallback positions** -- when recommending Revise dispositions, reference the playbook's ordered fallbacks to calibrate recommendations to the aggressiveness level
+- **Asset-type variations** -- apply if the deal's asset type has specific guidance
+
+Playbook content is firm-specific guidance. Market assessments backed by the playbook do NOT receive the † source marker.]
 
 ### Sentence-Level Analysis (Mandatory)
 You must read and assess every sentence in this batch individually. For each sentence, determine whether a change is warranted for the client's benefit. Do not skip sentences because they appear standard or boilerplate -- standard language frequently contains embedded risks that only surface on close reading. Every sentence gets a deliberate keep-or-change decision.
