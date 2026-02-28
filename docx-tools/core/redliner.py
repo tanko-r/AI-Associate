@@ -8,9 +8,10 @@ so changes display correctly in Microsoft Word's track changes view.
 import re
 import shutil
 from copy import deepcopy
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List, Optional
 
 import diff_match_patch as dmp_module
 from docx import Document
@@ -20,6 +21,13 @@ from docx.table import Table
 from docx.text.paragraph import Paragraph
 
 from core.inserter import find_paragraph_element
+
+
+@dataclass
+class CharFormatInfo:
+    """Maps a character position to its source run's formatting."""
+    run_index: int
+    rpr_element: Optional[OxmlElement]
 
 
 def redline_docx(
@@ -199,6 +207,33 @@ def _make_run(text: str, format_dict: dict = None, is_delete: bool = False):
     t.text = text
     run.append(t)
     return run
+
+
+def _build_char_format_map(paragraph) -> List[CharFormatInfo]:
+    """
+    Build a per-character map from paragraph text positions to source run formatting.
+
+    Returns a list where each index corresponds to a character in the paragraph's
+    concatenated text. Each entry holds the run_index and a deepcopy'd <w:rPr>
+    element (or None if the run has no explicit formatting).
+
+    Callers that need to modify an rpr_element must deepcopy it again — the same
+    object is shared across all characters within a single run for efficiency.
+    """
+    char_map: List[CharFormatInfo] = []
+    p = paragraph._p
+    run_elements = p.findall(qn("w:r"))
+
+    for run_idx, run_el in enumerate(run_elements):
+        rpr = run_el.find(qn("w:rPr"))
+        rpr_copy = deepcopy(rpr) if rpr is not None else None
+
+        for t_el in run_el.findall(qn("w:t")):
+            text = t_el.text or ""
+            for _ in text:
+                char_map.append(CharFormatInfo(run_index=run_idx, rpr_element=rpr_copy))
+
+    return char_map
 
 
 # ------------------------------------------------------------------
