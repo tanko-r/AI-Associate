@@ -189,40 +189,6 @@ def _apply_track_changes(paragraph, original_text: str, revised_text: str, autho
             # Do NOT advance orig_pos — insertions don't consume original text
 
 
-def _make_run(text: str, format_dict: dict = None, is_delete: bool = False):
-    """Create a w:r element with optional formatting."""
-    run = OxmlElement('w:r')
-    rPr = OxmlElement('w:rPr')
-    if format_dict:
-        if format_dict.get('bold'):
-            rPr.append(OxmlElement('w:b'))
-        if format_dict.get('italic'):
-            rPr.append(OxmlElement('w:i'))
-        if format_dict.get('underline'):
-            u = OxmlElement('w:u')
-            u.set(qn('w:val'), 'single')
-            rPr.append(u)
-        if format_dict.get('font_name'):
-            rFonts = OxmlElement('w:rFonts')
-            rFonts.set(qn('w:ascii'), format_dict['font_name'])
-            rFonts.set(qn('w:hAnsi'), format_dict['font_name'])
-            rPr.append(rFonts)
-        if format_dict.get('font_size'):
-            sz = OxmlElement('w:sz')
-            sz.set(qn('w:val'), str(int(format_dict['font_size'].pt * 2)))
-            rPr.append(sz)
-    run.append(rPr)
-
-    if is_delete:
-        t = OxmlElement('w:delText')
-    else:
-        t = OxmlElement('w:t')
-    t.set(qn('xml:space'), 'preserve')
-    t.text = text
-    run.append(t)
-    return run
-
-
 def _build_char_format_map(paragraph) -> List[CharFormatInfo]:
     """
     Build a per-character map from paragraph text positions to source run formatting.
@@ -297,10 +263,9 @@ def _make_run_from_rpr(
     """
     Create a <w:r> element using a deepcopy'd <w:rPr> XML element.
 
-    Unlike _make_run() which reconstructs formatting from a 5-property dict,
-    this function preserves full XML fidelity by copying the original run's
-    entire <w:rPr> element — including color, highlight, character styles,
-    superscript, complex script properties, and any other attributes.
+    Preserves full XML fidelity by copying the original run's entire <w:rPr>
+    element — including color, highlight, character styles, superscript,
+    complex script properties, and any other attributes.
 
     Args:
         text: The text content for the run.
