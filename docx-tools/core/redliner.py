@@ -128,22 +128,18 @@ def _iter_block_items(document):
 
 
 def _apply_track_changes(paragraph, original_text: str, revised_text: str, author: str):
-    """Apply track changes to a single paragraph using Word revision markup."""
+    """Apply track changes to a single paragraph using Word revision markup.
+
+    Uses per-character formatting map to preserve each run's original <w:rPr>,
+    so bold/italic/font changes within a paragraph survive the diff rebuild.
+    """
+    # Build char map BEFORE any mutations
+    char_map = _build_char_format_map(paragraph)
+
+    # Run diff
     dmp = dmp_module.diff_match_patch()
     diffs = dmp.diff_main(original_text, revised_text)
     dmp.diff_cleanupSemantic(diffs)
-
-    # Capture first run's formatting
-    first_run_format = None
-    if paragraph.runs:
-        first_run = paragraph.runs[0]
-        first_run_format = {
-            'bold': first_run.bold,
-            'italic': first_run.italic,
-            'underline': first_run.underline,
-            'font_name': first_run.font.name,
-            'font_size': first_run.font.size,
-        }
 
     # Clear existing runs
     p = paragraph._p
@@ -152,27 +148,45 @@ def _apply_track_changes(paragraph, original_text: str, revised_text: str, autho
             p.remove(child)
 
     rev_date = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+    orig_pos = 0  # cursor into char_map (tracks position in original text)
 
     for op, text in diffs:
-        if op == 0:  # Unchanged
-            run = _make_run(text, first_run_format)
-            p.append(run)
-        elif op == -1:  # Deletion
-            del_elem = OxmlElement('w:del')
-            del_elem.set(qn('w:id'), str(abs(hash(text)) % 100000))
-            del_elem.set(qn('w:author'), author)
-            del_elem.set(qn('w:date'), rev_date)
-            run = _make_run(text, first_run_format, is_delete=True)
-            del_elem.append(run)
-            p.append(del_elem)
-        elif op == 1:  # Insertion
+        if op == 0:  # Equal — text exists in both original and revised
+            segments = _split_segment_by_runs(text, orig_pos, char_map)
+            for sub_text, rpr in segments:
+                run = _make_run_from_rpr(sub_text, rpr)
+                p.append(run)
+            orig_pos += len(text)
+
+        elif op == -1:  # Deletion — text from original, not in revised
+            segments = _split_segment_by_runs(text, orig_pos, char_map)
+            for sub_text, rpr in segments:
+                del_elem = OxmlElement('w:del')
+                del_elem.set(qn('w:id'), str(abs(hash(sub_text + str(orig_pos))) % 100000))
+                del_elem.set(qn('w:author'), author)
+                del_elem.set(qn('w:date'), rev_date)
+                run = _make_run_from_rpr(sub_text, rpr, is_delete=True)
+                del_elem.append(run)
+                p.append(del_elem)
+            orig_pos += len(text)
+
+        elif op == 1:  # Insertion — new text not in original
+            # Inherit formatting from the character just before insertion point
+            if char_map and orig_pos > 0:
+                insert_rpr = char_map[orig_pos - 1].rpr_element
+            elif char_map:
+                insert_rpr = char_map[0].rpr_element
+            else:
+                insert_rpr = None
+
             ins_elem = OxmlElement('w:ins')
             ins_elem.set(qn('w:id'), str(abs(hash(text)) % 100000))
             ins_elem.set(qn('w:author'), author)
             ins_elem.set(qn('w:date'), rev_date)
-            run = _make_run(text, first_run_format)
+            run = _make_run_from_rpr(text, insert_rpr)
             ins_elem.append(run)
             p.append(ins_elem)
+            # Do NOT advance orig_pos — insertions don't consume original text
 
 
 def _make_run(text: str, format_dict: dict = None, is_delete: bool = False):
