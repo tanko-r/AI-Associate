@@ -236,6 +236,79 @@ def _build_char_format_map(paragraph) -> List[CharFormatInfo]:
     return char_map
 
 
+def _split_segment_by_runs(
+    text: str, start_pos: int, char_map: List[CharFormatInfo]
+) -> list:
+    """
+    Split a diff segment into sub-segments aligned to original run boundaries.
+
+    Returns a list of (sub_text, rpr_element) tuples, where each tuple covers
+    a contiguous span of characters that belonged to the same original run.
+
+    If start_pos >= len(char_map) (e.g. for pure insertions with no original
+    mapping), the entire text is returned with the last known rpr_element.
+    """
+    if not text:
+        return []
+
+    # Fallback when the segment is beyond the char_map (pure insertion)
+    if start_pos >= len(char_map):
+        last_rpr = char_map[-1].rpr_element if char_map else None
+        return [(text, last_rpr)]
+
+    segments: list = []
+    current_start = 0
+    current_run_idx = char_map[start_pos].run_index
+    current_rpr = char_map[start_pos].rpr_element
+
+    for offset in range(1, len(text)):
+        pos = start_pos + offset
+        if pos >= len(char_map):
+            # Remaining chars extend past the map — keep current formatting
+            break
+        if char_map[pos].run_index != current_run_idx:
+            segments.append((text[current_start:offset], current_rpr))
+            current_start = offset
+            current_run_idx = char_map[pos].run_index
+            current_rpr = char_map[pos].rpr_element
+
+    # Final segment
+    segments.append((text[current_start:], current_rpr))
+    return segments
+
+
+def _make_run_from_rpr(
+    text: str, rpr_element=None, is_delete: bool = False
+):
+    """
+    Create a <w:r> element using a deepcopy'd <w:rPr> XML element.
+
+    Unlike _make_run() which reconstructs formatting from a 5-property dict,
+    this function preserves full XML fidelity by copying the original run's
+    entire <w:rPr> element — including color, highlight, character styles,
+    superscript, complex script properties, and any other attributes.
+
+    Args:
+        text: The text content for the run.
+        rpr_element: An lxml <w:rPr> element to deepcopy into the run,
+                     or None to omit rPr (preserves style inheritance).
+        is_delete: If True, use <w:delText> instead of <w:t>.
+    """
+    run = OxmlElement("w:r")
+
+    if rpr_element is not None:
+        run.append(deepcopy(rpr_element))
+
+    if is_delete:
+        t = OxmlElement("w:delText")
+    else:
+        t = OxmlElement("w:t")
+    t.set(qn("xml:space"), "preserve")
+    t.text = text
+    run.append(t)
+    return run
+
+
 # ------------------------------------------------------------------
 # Helpers for insert_after / delete actions
 # ------------------------------------------------------------------
