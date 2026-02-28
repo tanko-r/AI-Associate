@@ -26,3 +26,13 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 | 2. Knowledge Layer | v1.0 | 2/2 | Complete | 2026-02-19 |
 | 3. Deal Workflows | v1.0 | 3/3 | Complete | 2026-02-18 |
 | 4. Integration Fixes & Cleanup | v1.0 | 1/1 | Complete | 2026-02-19 |
+
+### Phase 1: Formatting-preserving redline pipeline
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 0
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 1 to break down)

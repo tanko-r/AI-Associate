@@ -1,3 +1,16 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: executing
+last_updated: "2026-02-28T04:01:43.234Z"
+progress:
+  total_phases: 1
+  completed_phases: 0
+  total_plans: 4
+  completed_plans: 1
+---
+
 # Project State
 
 ## Project Reference
@@ -5,15 +18,16 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Sara's work product must be thorough enough that a partner would approve it with light review — every clause examined, every risk flagged with specific alternative language, every deliverable complete.
-**Current focus:** v1.0 shipped — planning next milestone
+**Current focus:** Formatting-preserving redline pipeline (Phase 1)
 
 ## Current Position
 
-Phase: v1.0 complete (4 phases, 9 plans)
-Status: Milestone shipped, archived to .planning/milestones/
-Last activity: 2026-02-21 - Completed quick task 1: Implement Sara v0.1.2 improvements
+Phase: 01-formatting-preserving-redline-pipeline (Plan 1/4)
+Current Plan: 2
+Status: Executing phase
+Last activity: 2026-02-27 - Completed 01-01 (Character-to-Run Mapping Infrastructure)
 
-Progress: [██████████] 100% (v1.0)
+Progress: [██░░░░░░░░] 25% (Phase 01: 1/4 plans)
 
 ## Performance Metrics
 
@@ -32,12 +46,19 @@ Progress: [██████████] 100% (v1.0)
 | 4. Integration Fixes & Cleanup | 1/1 | 3 min | 3 min |
 
 *Updated after each plan completion*
+| Phase 01 P01 | 3min | 2 tasks | 1 files |
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 1 added: Formatting-preserving redline pipeline
 
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.
+- [Phase 01]: Used dataclass for CharFormatInfo (lightweight, typed, readable)
+- [Phase 01]: Shared deepcopy per run with caller-must-deepcopy-before-modify contract
 
 ### Pending Todos
 
@@ -57,6 +78,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-21
-Stopped at: Completed quick-sara-v012-01 (Sara v0.1.2 improvements)
+Last session: 2026-02-27
+Stopped at: Completed 01-01-PLAN.md (Character-to-Run Mapping Infrastructure)
 Resume file: None
