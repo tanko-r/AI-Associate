@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-02-28T04:01:43.234Z"
+last_updated: "2026-02-28T04:06:30Z"
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 4
-  completed_plans: 1
+  completed_plans: 3
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 
 ## Current Position
 
-Phase: 01-formatting-preserving-redline-pipeline (Plan 1/4)
-Current Plan: 2
+Phase: 01-formatting-preserving-redline-pipeline (Plan 3/4)
+Current Plan: 4
 Status: Executing phase
-Last activity: 2026-02-27 - Completed 01-01 (Character-to-Run Mapping Infrastructure)
+Last activity: 2026-02-28 - Completed 01-03 (Apply Formatting-Preserving Fix to rebuild_docx.py)
 
-Progress: [██░░░░░░░░] 25% (Phase 01: 1/4 plans)
+Progress: [███████░░░] 75% (Phase 01: 3/4 plans)
 
 ## Performance Metrics
 
@@ -47,6 +47,8 @@ Progress: [██░░░░░░░░] 25% (Phase 01: 1/4 plans)
 
 *Updated after each plan completion*
 | Phase 01 P01 | 3min | 2 tasks | 1 files |
+| Phase 01 P02 | 2min | 2 tasks | 1 files |
+| Phase 01 P03 | 2min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -59,6 +61,9 @@ Progress: [██░░░░░░░░] 25% (Phase 01: 1/4 plans)
 Decisions are logged in PROJECT.md Key Decisions table.
 - [Phase 01]: Used dataclass for CharFormatInfo (lightweight, typed, readable)
 - [Phase 01]: Shared deepcopy per run with caller-must-deepcopy-before-modify contract
+- [Phase 01]: Insertions inherit rPr from preceding character (or first char if at position 0)
+- [Phase 01]: Deletion w:id uses hash of sub_text+orig_pos for uniqueness across split segments
+- [Phase 01]: Reused redliner helpers in rebuild_docx.py rather than duplicating char-map logic
 
 ### Pending Todos
 
@@ -78,6 +83,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-27
-Stopped at: Completed 01-01-PLAN.md (Character-to-Run Mapping Infrastructure)
+Last session: 2026-02-28
+Stopped at: Completed 01-03-PLAN.md (Apply Formatting-Preserving Fix to rebuild_docx.py)
 Resume file: None
