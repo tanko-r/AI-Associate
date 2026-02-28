@@ -31,7 +31,7 @@ See: `.planning/milestones/v1.0-ROADMAP.md` for full details.
 
 **Goal:** Preserve per-run formatting through track-change diff rebuild
 **Depends on:** v1.0 MVP
-**Plans:** 2/4 complete
+**Plans:** 3/4 plans executed
 
 Plans:
 - [x] 01-01: Character-to-Run Mapping Infrastructure
