@@ -58,7 +58,7 @@ Each task was committed atomically:
 
 1. **Task C1: Refactor the revise/replace paragraph path** - `3560761` (feat)
 
-**Plan metadata:** pending (docs: complete plan)
+**Plan metadata:** `192b601` (docs: complete plan)
 
 ## Files Created/Modified
 - `temp/rebuild_docx.py` - Refactored revise/replace path to use _build_char_format_map and _make_run_from_rpr; removed dead formatting functions
