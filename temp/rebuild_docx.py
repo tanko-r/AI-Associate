@@ -9,14 +9,15 @@ Usage:
 """
 import json
 import sys
-import copy
 from pathlib import Path
 from docx import Document
+from docx.oxml.ns import qn
 from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "docx-tools"))
 from core.inserter import insert_paragraph_after, remove_paragraph
+from core.redliner import _build_char_format_map, _make_run_from_rpr
 
 
 def load_revisions(*json_paths):
@@ -34,43 +35,6 @@ def load_revisions(*json_paths):
             for k, v in revisions.items():
                 all_revisions[float(k)] = v
     return all_revisions
-
-
-def get_paragraph_style_info(para):
-    """Extract style information from a paragraph for reuse."""
-    info = {
-        'style_name': para.style.name if para.style else 'Normal',
-        'alignment': para.alignment,
-    }
-    if para.runs:
-        run = para.runs[0]
-        info['font_name'] = run.font.name
-        info['font_size'] = run.font.size
-        info['bold'] = run.font.bold
-        info['italic'] = run.font.italic
-    return info
-
-
-def apply_style_to_paragraph(para, style_info):
-    """Apply extracted style info to a new paragraph."""
-    try:
-        para.style = para.part.document.styles[style_info.get('style_name', 'Normal')]
-    except KeyError:
-        pass
-    if style_info.get('alignment'):
-        para.alignment = style_info['alignment']
-
-
-def apply_style_to_run(run, style_info):
-    """Apply extracted style info to a run."""
-    if style_info.get('font_name'):
-        run.font.name = style_info['font_name']
-    if style_info.get('font_size'):
-        run.font.size = style_info['font_size']
-    if style_info.get('bold') is not None:
-        run.font.bold = style_info['bold']
-    if style_info.get('italic') is not None:
-        run.font.italic = style_info['italic']
 
 
 def rebuild_document(original_path, output_path, revisions):
@@ -94,13 +58,6 @@ def rebuild_document(original_path, output_path, revisions):
                 insertions[after_id] = []
             insertions[after_id].append(rev)
 
-    # Get a reference style from the document
-    ref_style = None
-    for para in doc.paragraphs:
-        if para.text.strip() and para.runs:
-            ref_style = get_paragraph_style_info(para)
-            break
-
     # Process revisions on existing paragraphs
     for i, para in enumerate(doc.paragraphs):
         text = para.text.strip()
@@ -111,17 +68,50 @@ def rebuild_document(original_path, output_path, revisions):
         if rev and rev.get('action') in ('revise', 'replace'):
             new_text = rev.get('revised_text', '')
             if new_text:
-                # Store style info before clearing
-                style_info = get_paragraph_style_info(para)
-                # Clear existing runs
-                for run in para.runs:
-                    run.text = ''
-                # Set new text
-                if para.runs:
-                    para.runs[0].text = new_text
+                # Build char map from original runs before any mutations
+                char_map = _build_char_format_map(para)
+
+                # Remove all existing <w:r> elements
+                p_elem = para._p
+                for child in list(p_elem):
+                    if child.tag == qn('w:r'):
+                        p_elem.remove(child)
+
+                # Rebuild runs mapping revised text to original formatting
+                if char_map:
+                    # Walk through revised text, assigning formatting from char_map
+                    # Characters beyond original length get the last run's formatting
+                    current_rpr = None
+                    current_run_index = -1
+                    segment_start = 0
+
+                    for ci, char in enumerate(new_text):
+                        if ci < len(char_map):
+                            rpr = char_map[ci].rpr_element
+                            run_idx = char_map[ci].run_index
+                        else:
+                            # Beyond original text -- use last run's formatting
+                            rpr = char_map[-1].rpr_element
+                            run_idx = char_map[-1].run_index + 1  # force new segment
+
+                        # Detect run boundary change
+                        if run_idx != current_run_index:
+                            # Emit previous segment
+                            if segment_start < ci:
+                                new_run = _make_run_from_rpr(new_text[segment_start:ci], current_rpr)
+                                p_elem.append(new_run)
+                            current_rpr = rpr
+                            current_run_index = run_idx
+                            segment_start = ci
+
+                    # Emit final segment
+                    if segment_start < len(new_text):
+                        new_run = _make_run_from_rpr(new_text[segment_start:], current_rpr)
+                        p_elem.append(new_run)
                 else:
-                    run = para.add_run(new_text)
-                    apply_style_to_run(run, style_info)
+                    # No char map (no original runs) -- just add text with no formatting
+                    new_run = _make_run_from_rpr(new_text, None)
+                    p_elem.append(new_run)
 
         elif rev and rev.get('action') == 'delete':
             # Remove the paragraph entirely via XML manipulation
